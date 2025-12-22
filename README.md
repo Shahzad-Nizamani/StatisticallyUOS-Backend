@@ -17,6 +17,14 @@ python -m venv venv
 # Install dependencies
 pip install -r requirements.txt
 
+Step 1:
+Create a .env file with 
+database_url = postgresql://postgres:xnfooty1@localhost:5432/project_usindh
+in it.
+
+Step 2: To Scrape & Seed the Database run:
+python -m src.seed.seed_dept
+
 
 Project folder structure:
 project_usindh/
