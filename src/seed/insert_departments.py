@@ -1,15 +1,12 @@
-from src.scraper.scrap_dept import get_departments
 from src.config.db_config import session, engine
 from src.db_models.department import department, base
 
 base.metadata.create_all(bind=engine)
 
-def add_all_departments():
+def save_dept_toDB(departments):
     db_session = session()
 
     try:
-        departments = get_departments()
-
         for d in departments:
             exists = db_session.query(department).filter_by(Did=d.Did).first()
 
@@ -23,6 +20,3 @@ def add_all_departments():
         db_session.rollback()
     finally:
         db_session.close()
-
-if __name__ == "__main__":
-    add_all_departments()

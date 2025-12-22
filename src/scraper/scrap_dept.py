@@ -21,10 +21,10 @@ def download_html(url, output_file):
 url = "https://exam.usindh.edu.pk/v2/course.php"
 html_file = "src/scraper/departments.html"
 
-# Download HTML
-download_html(url, html_file)
-
 def get_departments():
+
+        # Download HTML
+    download_html(url, html_file)
     # Read the downloaded HTML
     with open(html_file, "r", encoding="utf-8") as f:
         html = f.read()
@@ -56,10 +56,7 @@ def get_departments():
 
             id_counter += 1
 
-    # Save to JSON
-    with open("src/scraper/departments.json", "w", encoding="utf-8") as f:
-        json.dump(departments, f, ensure_ascii=False, indent=4)
 
-    print(f"{len(departments)} departments saved to departments.json")
+    print("Scraped all departments succesfully.")
 
     return d_obj
