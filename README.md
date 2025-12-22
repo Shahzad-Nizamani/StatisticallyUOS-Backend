@@ -30,7 +30,7 @@ project_usindh/
 ├── main.py           # FastAPI Entry point
 └── requirements.txt
 
+
 To Scrape & Seed the Database run:
-Bash
 python -m src.seed.insert_departments
 
