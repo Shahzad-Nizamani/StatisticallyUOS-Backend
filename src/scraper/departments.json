@@ -1,249 +1,990 @@
-{
-    "D1": "ABIDA TAHERANI SINDH DEVELOPMENT STUDIES CENTRE",
-    "D2": "ACCOUNTING AND FINANCE",
-    "D3": "ALI BABA GOVERNMENT BOYS DEGREE COLLEGE KOTRI",
-    "D4": "ALI LAW COLLEGE SANGHAR",
-    "D5": "ANEES HASSAN CENTER OF EXCELLENCE HYDERABAD",
-    "D6": "ANTHROPOLOGY & ARCHAEOLOGY",
-    "D7": "APPLIED LINGUISTICS",
-    "D8": "ARABIC",
-    "D9": "AREA STUDY CENTRE FAR EAST AND SOUTH EAST ASIA",
-    "D10": "ART & DESIGN",
-    "D11": "ARTIFICIAL INTELLIGENCE",
-    "D12": "BANKING AND FINANCE",
-    "D13": "BIOCHEMISTRY",
-    "D14": "BIOTECHNOLOGY",
-    "D15": "BOTANY",
-    "D16": "BUSINESS ADMINSTRATION",
-    "D17": "CENTRE FOR  PHYSICAL EDUCATION  HEALTH & SPORTS SCIENCE",
-    "D18": "CENTRE FOR ENVIRONMENTAL SCIENCES",
-    "D19": "CENTRE FOR MUSIC EDUCATION  INSTITUTE OF ART & DESIGN",
-    "D20": "CENTRE FOR PURE & APPLIED GEOLOGY",
-    "D21": "CENTRE FOR RURAL DEVELOPMENT COMMUNICATION",
-    "D22": "CHEMISTRY",
-    "D23": "COASTAL AND MARINE SCIENCES",
-    "D24": "COLLEGE OF MODEREN SCIENCES",
-    "D25": "COMMERCE",
-    "D26": "COMPARATIVE RELIGION & ISLAMIC CULTURE",
-    "D27": "COMPUTER SCIENCE",
-    "D28": "CRIMINOLOGY",
-    "D29": "CURRICULM DEVELOPMENT AND SPECIAL EDUCATION",
-    "D30": "DATA SCIENCE",
-    "D31": "DISASTER MANAGEMENT",
-    "D32": "DISTANCE CONTINUING AND COMPUTER EDUCATION",
-    "D33": "DR. A.H.S. BUKHARI IICT",
-    "D34": "DR. M.A. KAZI INSTITUTE OF CHEMISTRY",
-    "D35": "DR. NASREEN MAQBOOL MEMON GOVERNMENT DEGREE COLLEGE M. SADIQUE MEMON TANDO ALLAHYAR",
-    "D36": "EARLY CHILDHOOD AND ELEMENTARY EDUCATION",
-    "D37": "EASTERN MEDICINE AND SURGERY",
-    "D38": "ECOLE LAW COLLEGE HYDERABAD",
-    "D39": "ECONOMICS",
-    "D40": "ECONOMICS AND FINANCE",
-    "D41": "EDUCATION",
-    "D42": "EDUCATION  SINDH UNIVERSITY LAAR CAMPUS @ BADIN",
-    "D43": "EDUCATIONAL MANAGEMENT AND SUPERVISION",
-    "D44": "ELECTRONIC (FET)",
-    "D45": "ELECTRONICS",
-    "D46": "ENGLISH",
-    "D47": "ENGLISH LANGUAGE & LITERATURE",
-    "D48": "ENGLISH LANGUAGE & LITERATURE (ELSA KAZI CAMPUS)",
-    "D49": "ENGLISH LANGUAGE TEACHING",
-    "D50": "EVEREST LAW COLLEGE HYDERABAD",
-    "D51": "FAIZ MUHAMMAD SAHITO LAW COLLEGE KANDIARO",
-    "D52": "FISHERIES AND AQUATIC SCIENCES",
-    "D53": "FORENSIC ACCOUNTING AND FRAUD EXAMINATION",
-    "D54": "FORESTRY",
-    "D55": "FOUNDATION COLLEGE OF LAW TANDO JAM",
-    "D56": "FRESHWATER BIOLOGY & FISHERIES",
-    "D57": "GENDER STUDIES",
-    "D58": "GENERAL HISTORY",
-    "D59": "GENETIC ENGINEERING",
-    "D60": "GEOGRAPHY",
-    "D61": "GEOLOGY",
-    "D62": "GOVERNMENT (N) AGRO TECHNICAL TEACHERS TRAINING COLLEGE",
-    "D63": "GOVERNMENT BOYS COLLEGE KALI MORI  HYDERABAD",
-    "D64": "GOVERNMENT BOYS COLLEGE QASIMABAD  HYDERABAD",
-    "D65": "GOVERNMENT BOYS COLLEGE TANDO JAN MUHAMMAD",
-    "D66": "GOVERNMENT BOYS DEGREE COLLEGE BHAN SAEEDABAD",
-    "D67": "GOVERNMENT BOYS DEGREE COLLEGE BHITSHAH",
-    "D68": "GOVERNMENT BOYS DEGREE COLLEGE JHUDDO",
-    "D69": "GOVERNMENT BOYS DEGREE COLLEGE JHUDDO",
-    "D70": "GOVERNMENT BOYS DEGREE COLLEGE MATIARI",
-    "D71": "GOVERNMENT BOYS DEGREE COLLEGE MATLI",
-    "D72": "GOVERNMENT BOYS DEGREE COLLEGE NEW SAEEDABAD",
-    "D73": "GOVERNMENT BOYS DEGREE COLLEGE SEHWAN",
-    "D74": "GOVERNMENT BOYS DEGREE COLLEGE SINDHRI",
-    "D75": "GOVERNMENT BOYS DEGREE COLLEGE SUJAWAL",
-    "D76": "GOVERNMENT BOYS DEGREE COLLEGE THATTA",
-    "D77": "GOVERNMENT BOYS DEGREE COLLEGE UMERKOT",
-    "D78": "GOVERNMENT CITY COLLEGE HYDERABAD",
-    "D79": "GOVERNMENT COLLEGE PARETABAD HYDERABAD",
-    "D80": "GOVERNMENT DEGREE COLLEGE GHORA BARI",
-    "D81": "GOVERNMENT DEGREE COLLEGE KOHISAR HYDERABAD",
-    "D82": "GOVERNMENT DEGREE COLLEGE KOT GHULAM MUHAMMAD",
-    "D83": "GOVERNMENT DEGREE COLLEGE LATIFABAD# 11 HYDERABAD",
-    "D84": "GOVERNMENT DEGREE COLLEGE TANDO JAM",
-    "D85": "GOVERNMENT DR. I. H. ZUBERI GIRLS COLLEGE HYDERABAD",
-    "D86": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  DADU",
-    "D87": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  HYDERABAD",
-    "D88": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  MIRPURKHAS",
-    "D89": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  SANGHAR",
-    "D90": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  THATA",
-    "D91": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN/  WOMEN)  MITHI",
-    "D92": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN/ WOMEN)  BADIN",
-    "D93": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN/ WOMEN)  UMERKOT",
-    "D94": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  DADU",
-    "D95": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  HYDERABAD",
-    "D96": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  MIRPURKHAS",
-    "D97": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  SANGHAR",
-    "D98": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  THATA",
-    "D99": "GOVERNMENT F.G DEGREE COLLEGE CANTT. HYDERABAD",
-    "D100": "GOVERNMENT GHAZALI COLLEGE LATIFABAD HYDERABAD",
-    "D101": "GOVERNMENT GIRLS COLLEGE  KUNRI",
-    "D102": "GOVERNMENT GIRLS COLLEGE HYDERABAD",
-    "D103": "GOVERNMENT GIRLS COLLEGE QASIMABAD  HYDERABAD",
-    "D104": "GOVERNMENT GIRLS DEGREE COLLEGE  BHAN SAEEDABAD",
-    "D105": "GOVERNMENT GIRLS DEGREE COLLEGE  HALA",
-    "D106": "GOVERNMENT GIRLS DEGREE COLLEGE  KOTRI",
-    "D107": "GOVERNMENT GIRLS DEGREE COLLEGE  MATLI",
-    "D108": "GOVERNMENT GIRLS DEGREE COLLEGE  MITHI",
-    "D109": "GOVERNMENT GIRLS DEGREE COLLEGE  SEHWAN SHARIF",
-    "D110": "GOVERNMENT GIRLS DEGREE COLLEGE  TANDO JAN MUHAMMAD",
-    "D111": "GOVERNMENT GIRLS DEGREE COLLEGE  TANDO MUHAMMAD KHAN",
-    "D112": "GOVERNMENT GIRLS DEGREE COLLEGE  THATTA",
-    "D113": "GOVERNMENT GIRLS DEGREE COLLEGE BADIN",
-    "D114": "GOVERNMENT GIRLS DEGREE COLLEGE JHUDDO",
-    "D115": "GOVERNMENT GIRLS DEGREE COLLEGE LATIFABAD NO.8 HYDERABAD",
-    "D116": "GOVERNMENT GIRLS DEGREE COLLEGE SAMARO",
-    "D117": "GOVERNMENT GIRLS DEGREE COLLEGE TANDO JAM",
-    "D118": "GOVERNMENT GIRLS DEGREE COLLEGE UMERKOT",
-    "D119": "GOVERNMENT GIRLS ZUBEDA COLLEGE  HYDERABAD",
-    "D120": "GOVERNMENT ISLAMIA DEGREE COLLEGE  BADIN",
-    "D121": "GOVERNMENT JINNAH LAW COLLEGE HYDERABAD",
-    "D122": "GOVERNMENT K.B.M.S GIRLS DEGREE COLLEGE HYDERABAD",
-    "D123": "GOVERNMENT M.B AND G.F  GIRLS COLLEGE HYDERABAD",
-    "D124": "GOVERNMENT MIR GHULAM ALI TALPUR DEGREE COLLEGE TANDO BAGO",
-    "D125": "GOVERNMENT MIR GHULAM MUHAMMAD TALPUR DEGREE COLLEGE  TANDO BAGO  BADIN",
-    "D126": "GOVERNMENT MODEL COLLEGE MIRPURKHAS",
-    "D127": "GOVERNMENT MUSLIM SCIENCE DEGREE COLLEGE   HYDERABAD",
-    "D128": "GOVERNMENT NATIONAL AGRO TECHNICAL TEACHERS TRAINING COLLEGE  HYDERABAD",
-    "D129": "GOVERNMENT NUZRAT GIRLS COLLEGE  HYDERABAD",
-    "D130": "GOVERNMENT PAKISTAN DEGREE COLLEGE SAEEDPUR",
-    "D131": "GOVERNMENT PIR ILLAHI BUX LAW COLLEGE  DADU",
-    "D132": "GOVERNMENT S.M DEGREE COLLEGE TANDO ALLAH YAR",
-    "D133": "GOVERNMENT SACHAL SARMAST ARTS/  COMMERCE COLLEGE HYDERABAD",
-    "D134": "GOVERNMENT SACHAL SARMAST COMMERCE COLLEGE HIRABAD HYDERABAD",
-    "D135": "GOVERNMENT SARWARI ISLAMIA DEGREE COLLEGE  HALA",
-    "D136": "GOVERNMENT SHAH LATIF GIRLS COLLEGE LATIFABAD  HYDERABAD",
-    "D137": "GOVERNMENT SINDH COLLEGE OF COMMERCE HYDERABAD",
-    "D138": "GOVERNMENT SINDH LAW COLLEGE HYDERABAD",
-    "D139": "HISTORY",
-    "D140": "HYDERABAD INSTITUTE OF ARTS  SCIENCES & TECHNOLOGY",
-    "D141": "HYDERABAD LAW COLLEGE",
-    "D142": "IBNE RUSHID GOVERNMENT GIRLS COLLEGE  MIRPURKHAS",
-    "D143": "IMSA LAW COLLEGE HYDERABAD",
-    "D144": "INDUS COLLEGE OF LAW  HYDERABAD",
-    "D145": "INFORMATION TECHNOLOGY",
-    "D146": "INFORMATION TECHNOLOGY (FET)",
-    "D147": "INSTITUTE  OF BUSINESS ADMINISTRATION",
-    "D148": "INSTITUTE FOR ADVANCED RESEARCH STUDIES IN CHEMICAL SCIENCES",
-    "D149": "INSTITUTE OF ARTS & DESIGN",
-    "D150": "INSTITUTE OF BIOCHEMISTRY",
-    "D151": "INSTITUTE OF BIOTECHNOLOGY & GENETIC ENGINEERING",
-    "D152": "INSTITUTE OF BUSINESS STUDIES",
-    "D153": "INSTITUTE OF BUSINESS STUDIES HYDERABAD",
-    "D154": "INSTITUTE OF COMMERCE & MANAGEMENT",
-    "D155": "INSTITUTE OF ENGLISH LANGUAGE & LITERATURE",
-    "D156": "INSTITUTE OF GENDER STUDIES",
-    "D157": "INSTITUTE OF INFORMATION & COMMUNICATION TECHNOLOGY",
-    "D158": "INSTITUTE OF LANGUAGES",
-    "D159": "INSTITUTE OF LAW",
-    "D160": "INSTITUTE OF MATHEMATICS & COMPUTER SCIENCE",
-    "D161": "INSTITUTE OF MODEREN SCIENCES & ARTS  HYDERABAD",
-    "D162": "INSTITUTE OF PHARMACY",
-    "D163": "INSTITUTE OF PHYSICS",
-    "D164": "INSTITUTE OF PLANT SCIENCES",
-    "D165": "INTERNATIONAL RELATIONS",
-    "D166": "IQRA LAW COLLEGE MORO",
-    "D167": "KHURSHEED BEGUM GOVERNMENT GIRLS DEGREE COLLEGE  HYDERABAD",
-    "D168": "LAW",
-    "D169": "LAW (ALLAMA I.I. KAZI CAMPUS)",
-    "D170": "LEON S COLLEGE OF LAW NAWAB SHAH",
-    "D171": "LIBRARY INFORMATION SCIENCE & ARCHIVE STUDIES",
-    "D172": "LUMPUS LAW COLLEGE",
-    "D173": "M.D ORIENTAL AND ARTS DEGREE COLLEGE  HAJI MUHAMMAD Alam Palli",
-    "D174": "MAKHDOOM MUHAMMAD ZAMAN TALIB-UL-MOLA GOVT. LAW COLLEGE",
-    "D175": "MANAGEMENT INSTITUTE OF TECHNOLOGY",
-    "D176": "MATHEMATICS",
-    "D177": "MEDIA & COMMUNICATION STUDIES",
-    "D178": "MEDICAL LABORATORY TECHNOLOGY",
-    "D179": "MICROBIOLOGY",
-    "D180": "MIR GHULAM ALI KHAN TALPUR GOVERNMENT BOYS DEGREE COLLEGE TANDO MUHAMMAD KHAN",
-    "D181": "MIR HAJI KHUDA BUX KHAN TALPUR GOVERNMENT BOYS DEGREE COLLEGE TANDO JAM",
-    "D182": "MIRPURKHAS LAW COLLEGE",
-    "D183": "MOHTARMA BENAZIR BHUTTO SHAHEED CAMPUS DADU",
-    "D184": "MONARCH COLLEGE OF LAW",
-    "D185": "MUHAMMAD INSTITUTE OF SCIENCE & TECHNOLOGY  MIRPURKHAS",
-    "D186": "MUSLIM HISTORY",
-    "D187": "NATIONAL CENTRE OF EXCELLENCE  IN ANALYTICAL CHEMISTRY",
-    "D188": "NATIONAL CENTRE OF EXCELLENCE IN ANALYTICAL CHEMISTRY",
-    "D189": "NATIONAL COLLEGE OF ARTS AND MANAGEMENT SCIENCE HYDERABAD",
-    "D190": "NATIONAL DEGREE COLLEGE DHABEJI",
-    "D191": "NATIONAL INSTITUTE OF EMERGING SCIENCES MIRPURKHAS",
-    "D192": "NAZEER HASSAIN INSTITUTE OF EMERGING SCIENCE  MIRPURKHAS",
-    "D193": "NUTRITION & FOOD SCIENCE",
-    "D194": "NUTRITION & FOOD TECHNOLOGY",
-    "D195": "ORIENTAL LAW COLLEGE MEHRABPUR",
-    "D196": "PAKISTAN STUDIES CENTRE",
-    "D197": "PERSIAN",
-    "D198": "PHARMACEUTICAL CHEMISTRY",
-    "D199": "PHARMACEUTICS",
-    "D200": "PHARMACOGNOSY",
-    "D201": "PHARMACOLOGY",
-    "D202": "PHARMACY",
-    "D203": "PHARMACY PRACTICE",
-    "D204": "PHILOSOPHY",
-    "D205": "PHYSICAL THERAPY",
-    "D206": "PHYSICS",
-    "D207": "PHYSIOLOGY",
-    "D208": "POLITICAL SCIENCE",
-    "D209": "POULTRY FARMING AND MANAGEMENT",
-    "D210": "PROVINCIAL INSTITUTE OF TEACHERS EDUCATION (PITE)  NAWABSHAH",
-    "D211": "PROVINCIAL INSTITUTE OF TEACHERS EDUCATION (PITE) NAWABSHAH",
-    "D212": "PSYCHOLOGICAL TESTING AND GUIDANCE AND RESEARCH",
-    "D213": "PSYCHOLOGY",
-    "D214": "PUBLIC ADMINISTRATION",
-    "D215": "PUBLIC HEALTH",
-    "D216": "QAZI MIAN AHMED QURESHI LAW COLLEGE MORO",
-    "D217": "QUAID-E-AZAM LAW COLLEGE NAWABSHAH",
-    "D218": "SADIQUE FAQEER GOVERNMENT BOYS DEGREE COLLEGE  MITHI",
-    "D219": "SARDAR MUHAMMAD ALI SHAH GOVERNMENT GIRLS DEGREE COLLEGE  MATIARI",
-    "D220": "SCIENCE AND TECHNICAL EDUCATION",
-    "D221": "SH. PROF.BASHIR AHMED CHANNAR DEPT.OF MICROBIOLOGY",
-    "D222": "SHAH ABDUL LATIF GOVERNMENT DEGREE COLLEGE MIRPURKHAS",
-    "D223": "SHAHEED BENAZIR BHUTTO LAW COLLEGE",
-    "D224": "SHAN-E-AASI COLLEGE OF LAW TANDO ADAM",
-    "D225": "SINDH DEVELOPMENT STUDIES CENTRE",
-    "D226": "SINDH MEHRAN INSTITUTE OF LAW JAMSHORO",
-    "D227": "SINDH UNIVERSITY CAMPUS BHIT SHAH  IUPSMS",
-    "D228": "SINDH UNIVERSITY CAMPUS LARKANA",
-    "D229": "SINDH UNIVERSITY CAMPUS MIRPURKHAS",
-    "D230": "SINDH UNIVERSITY CAMPUS THATTA",
-    "D231": "SINDH UNIVERSITY LAAR CAMPUS @ BADIN",
-    "D232": "SINDHI",
-    "D233": "SISTECH LAW COLLEGE SUKKUR",
-    "D234": "SOCIAL WORK",
-    "D235": "SOCIOLOGY",
-    "D236": "SOFTWARE ENGINEERING",
-    "D237": "SOFTWARE ENGINEERING (FET)",
-    "D238": "STATISTICS",
-    "D239": "SUKKUR INSTITUTE OF SCIENCE & TECHNOLOGY  SUKKAR",
-    "D240": "SYED ALLAHANDO SHAH CAMPUS NAUSHAHRO FEROZ",
-    "D241": "TANDO ALLAHYAR LAW COLLEGE",
-    "D242": "TELECOMMUNICATION",
-    "D243": "TELECOMMUNICATION (FET)",
-    "D244": "TELEMEDICINE & E-HEALTH",
-    "D245": "URDU",
-    "D246": "ZEESHAN LAW COLLEGE HYDERABAD",
-    "D247": "ZOOLOGY"
-}
+[
+    {
+        "id": 263,
+        "name": "ABIDA TAHERANI SINDH DEVELOPMENT STUDIES CENTRE"
+    },
+    {
+        "id": 300,
+        "name": "ACCOUNTING AND FINANCE"
+    },
+    {
+        "id": 177,
+        "name": "ALI BABA GOVERNMENT BOYS DEGREE COLLEGE KOTRI"
+    },
+    {
+        "id": 215,
+        "name": "ALI LAW COLLEGE SANGHAR"
+    },
+    {
+        "id": 292,
+        "name": "ANEES HASSAN CENTER OF EXCELLENCE HYDERABAD"
+    },
+    {
+        "id": 73,
+        "name": "ANTHROPOLOGY & ARCHAEOLOGY"
+    },
+    {
+        "id": 266,
+        "name": "APPLIED LINGUISTICS"
+    },
+    {
+        "id": 50,
+        "name": "ARABIC"
+    },
+    {
+        "id": 235,
+        "name": "AREA STUDY CENTRE FAR EAST AND SOUTH EAST ASIA"
+    },
+    {
+        "id": 49,
+        "name": "ART & DESIGN"
+    },
+    {
+        "id": 279,
+        "name": "ARTIFICIAL INTELLIGENCE"
+    },
+    {
+        "id": 248,
+        "name": "BANKING AND FINANCE"
+    },
+    {
+        "id": 60,
+        "name": "BIOCHEMISTRY"
+    },
+    {
+        "id": 65,
+        "name": "BIOTECHNOLOGY"
+    },
+    {
+        "id": 19,
+        "name": "BOTANY"
+    },
+    {
+        "id": 2,
+        "name": "BUSINESS ADMINSTRATION"
+    },
+    {
+        "id": 30,
+        "name": "CENTRE FOR  PHYSICAL EDUCATION  HEALTH & SPORTS SCIENCE"
+    },
+    {
+        "id": 61,
+        "name": "CENTRE FOR ENVIRONMENTAL SCIENCES"
+    },
+    {
+        "id": 78,
+        "name": "CENTRE FOR MUSIC EDUCATION  INSTITUTE OF ART & DESIGN"
+    },
+    {
+        "id": 255,
+        "name": "CENTRE FOR PURE & APPLIED GEOLOGY"
+    },
+    {
+        "id": 35,
+        "name": "CENTRE FOR RURAL DEVELOPMENT COMMUNICATION"
+    },
+    {
+        "id": 12,
+        "name": "CHEMISTRY"
+    },
+    {
+        "id": 256,
+        "name": "COASTAL AND MARINE SCIENCES"
+    },
+    {
+        "id": 82,
+        "name": "COLLEGE OF MODEREN SCIENCES"
+    },
+    {
+        "id": 42,
+        "name": "COMMERCE"
+    },
+    {
+        "id": 57,
+        "name": "COMPARATIVE RELIGION & ISLAMIC CULTURE"
+    },
+    {
+        "id": 10,
+        "name": "COMPUTER SCIENCE"
+    },
+    {
+        "id": 41,
+        "name": "CRIMINOLOGY"
+    },
+    {
+        "id": 241,
+        "name": "CURRICULM DEVELOPMENT AND SPECIAL EDUCATION"
+    },
+    {
+        "id": 260,
+        "name": "DATA SCIENCE"
+    },
+    {
+        "id": 264,
+        "name": "DISASTER MANAGEMENT"
+    },
+    {
+        "id": 239,
+        "name": "DISTANCE CONTINUING AND COMPUTER EDUCATION"
+    },
+    {
+        "id": 254,
+        "name": "DR. A.H.S. BUKHARI IICT"
+    },
+    {
+        "id": 11,
+        "name": "DR. M.A. KAZI INSTITUTE OF CHEMISTRY"
+    },
+    {
+        "id": 197,
+        "name": "DR. NASREEN MAQBOOL MEMON GOVERNMENT DEGREE COLLEGE M. SADIQUE MEMON TANDO ALLAHYAR"
+    },
+    {
+        "id": 238,
+        "name": "EARLY CHILDHOOD AND ELEMENTARY EDUCATION"
+    },
+    {
+        "id": 280,
+        "name": "EASTERN MEDICINE AND SURGERY"
+    },
+    {
+        "id": 286,
+        "name": "ECOLE LAW COLLEGE HYDERABAD"
+    },
+    {
+        "id": 1,
+        "name": "ECONOMICS"
+    },
+    {
+        "id": 265,
+        "name": "ECONOMICS AND FINANCE"
+    },
+    {
+        "id": 67,
+        "name": "EDUCATION"
+    },
+    {
+        "id": 74,
+        "name": "EDUCATION  SINDH UNIVERSITY LAAR CAMPUS @ BADIN"
+    },
+    {
+        "id": 236,
+        "name": "EDUCATIONAL MANAGEMENT AND SUPERVISION"
+    },
+    {
+        "id": 250,
+        "name": "ELECTRONIC (FET)"
+    },
+    {
+        "id": 15,
+        "name": "ELECTRONICS"
+    },
+    {
+        "id": 45,
+        "name": "ENGLISH"
+    },
+    {
+        "id": 267,
+        "name": "ENGLISH LANGUAGE & LITERATURE"
+    },
+    {
+        "id": 301,
+        "name": "ENGLISH LANGUAGE & LITERATURE (ELSA KAZI CAMPUS)"
+    },
+    {
+        "id": 257,
+        "name": "ENGLISH LANGUAGE TEACHING"
+    },
+    {
+        "id": 285,
+        "name": "EVEREST LAW COLLEGE HYDERABAD"
+    },
+    {
+        "id": 218,
+        "name": "FAIZ MUHAMMAD SAHITO LAW COLLEGE KANDIARO"
+    },
+    {
+        "id": 277,
+        "name": "FISHERIES AND AQUATIC SCIENCES"
+    },
+    {
+        "id": 261,
+        "name": "FORENSIC ACCOUNTING AND FRAUD EXAMINATION"
+    },
+    {
+        "id": 249,
+        "name": "FORESTRY"
+    },
+    {
+        "id": 284,
+        "name": "FOUNDATION COLLEGE OF LAW TANDO JAM"
+    },
+    {
+        "id": 20,
+        "name": "FRESHWATER BIOLOGY & FISHERIES"
+    },
+    {
+        "id": 29,
+        "name": "GENDER STUDIES"
+    },
+    {
+        "id": 31,
+        "name": "GENERAL HISTORY"
+    },
+    {
+        "id": 18,
+        "name": "GENETIC ENGINEERING"
+    },
+    {
+        "id": 21,
+        "name": "GEOGRAPHY"
+    },
+    {
+        "id": 22,
+        "name": "GEOLOGY"
+    },
+    {
+        "id": 304,
+        "name": "GOVERNMENT (N) AGRO TECHNICAL TEACHERS TRAINING COLLEGE"
+    },
+    {
+        "id": 95,
+        "name": "GOVERNMENT BOYS COLLEGE KALI MORI  HYDERABAD"
+    },
+    {
+        "id": 96,
+        "name": "GOVERNMENT BOYS COLLEGE QASIMABAD  HYDERABAD"
+    },
+    {
+        "id": 102,
+        "name": "GOVERNMENT BOYS COLLEGE TANDO JAN MUHAMMAD"
+    },
+    {
+        "id": 201,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE BHAN SAEEDABAD"
+    },
+    {
+        "id": 199,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE BHITSHAH"
+    },
+    {
+        "id": 270,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE JHUDDO"
+    },
+    {
+        "id": 299,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE JHUDDO"
+    },
+    {
+        "id": 190,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE MATIARI"
+    },
+    {
+        "id": 165,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE MATLI"
+    },
+    {
+        "id": 189,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE NEW SAEEDABAD"
+    },
+    {
+        "id": 174,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE SEHWAN"
+    },
+    {
+        "id": 298,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE SINDHRI"
+    },
+    {
+        "id": 186,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE SUJAWAL"
+    },
+    {
+        "id": 175,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE THATTA"
+    },
+    {
+        "id": 171,
+        "name": "GOVERNMENT BOYS DEGREE COLLEGE UMERKOT"
+    },
+    {
+        "id": 159,
+        "name": "GOVERNMENT CITY COLLEGE HYDERABAD"
+    },
+    {
+        "id": 195,
+        "name": "GOVERNMENT COLLEGE PARETABAD HYDERABAD"
+    },
+    {
+        "id": 205,
+        "name": "GOVERNMENT DEGREE COLLEGE GHORA BARI"
+    },
+    {
+        "id": 191,
+        "name": "GOVERNMENT DEGREE COLLEGE KOHISAR HYDERABAD"
+    },
+    {
+        "id": 269,
+        "name": "GOVERNMENT DEGREE COLLEGE KOT GHULAM MUHAMMAD"
+    },
+    {
+        "id": 244,
+        "name": "GOVERNMENT DEGREE COLLEGE LATIFABAD# 11 HYDERABAD"
+    },
+    {
+        "id": 182,
+        "name": "GOVERNMENT DEGREE COLLEGE TANDO JAM"
+    },
+    {
+        "id": 185,
+        "name": "GOVERNMENT DR. I. H. ZUBERI GIRLS COLLEGE HYDERABAD"
+    },
+    {
+        "id": 108,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  DADU"
+    },
+    {
+        "id": 103,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  HYDERABAD"
+    },
+    {
+        "id": 105,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  MIRPURKHAS"
+    },
+    {
+        "id": 110,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  SANGHAR"
+    },
+    {
+        "id": 112,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN)  THATA"
+    },
+    {
+        "id": 107,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN/  WOMEN)  MITHI"
+    },
+    {
+        "id": 114,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN/ WOMEN)  BADIN"
+    },
+    {
+        "id": 293,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (MEN/ WOMEN)  UMERKOT"
+    },
+    {
+        "id": 109,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  DADU"
+    },
+    {
+        "id": 104,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  HYDERABAD"
+    },
+    {
+        "id": 106,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  MIRPURKHAS"
+    },
+    {
+        "id": 111,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  SANGHAR"
+    },
+    {
+        "id": 113,
+        "name": "GOVERNMENT ELEMENTARY COLLEGE OF EDUCATION (WOMEN)  THATA"
+    },
+    {
+        "id": 187,
+        "name": "GOVERNMENT F.G DEGREE COLLEGE CANTT. HYDERABAD"
+    },
+    {
+        "id": 163,
+        "name": "GOVERNMENT GHAZALI COLLEGE LATIFABAD HYDERABAD"
+    },
+    {
+        "id": 198,
+        "name": "GOVERNMENT GIRLS COLLEGE  KUNRI"
+    },
+    {
+        "id": 268,
+        "name": "GOVERNMENT GIRLS COLLEGE HYDERABAD"
+    },
+    {
+        "id": 99,
+        "name": "GOVERNMENT GIRLS COLLEGE QASIMABAD  HYDERABAD"
+    },
+    {
+        "id": 295,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE  BHAN SAEEDABAD"
+    },
+    {
+        "id": 180,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE  HALA"
+    },
+    {
+        "id": 188,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE  KOTRI"
+    },
+    {
+        "id": 166,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE  MATLI"
+    },
+    {
+        "id": 194,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE  MITHI"
+    },
+    {
+        "id": 242,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE  SEHWAN SHARIF"
+    },
+    {
+        "id": 192,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE  TANDO JAN MUHAMMAD"
+    },
+    {
+        "id": 179,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE  TANDO MUHAMMAD KHAN"
+    },
+    {
+        "id": 178,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE  THATTA"
+    },
+    {
+        "id": 273,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE BADIN"
+    },
+    {
+        "id": 274,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE JHUDDO"
+    },
+    {
+        "id": 184,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE LATIFABAD NO.8 HYDERABAD"
+    },
+    {
+        "id": 297,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE SAMARO"
+    },
+    {
+        "id": 272,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE TANDO JAM"
+    },
+    {
+        "id": 181,
+        "name": "GOVERNMENT GIRLS DEGREE COLLEGE UMERKOT"
+    },
+    {
+        "id": 98,
+        "name": "GOVERNMENT GIRLS ZUBEDA COLLEGE  HYDERABAD"
+    },
+    {
+        "id": 168,
+        "name": "GOVERNMENT ISLAMIA DEGREE COLLEGE  BADIN"
+    },
+    {
+        "id": 206,
+        "name": "GOVERNMENT JINNAH LAW COLLEGE HYDERABAD"
+    },
+    {
+        "id": 161,
+        "name": "GOVERNMENT K.B.M.S GIRLS DEGREE COLLEGE HYDERABAD"
+    },
+    {
+        "id": 160,
+        "name": "GOVERNMENT M.B AND G.F  GIRLS COLLEGE HYDERABAD"
+    },
+    {
+        "id": 271,
+        "name": "GOVERNMENT MIR GHULAM ALI TALPUR DEGREE COLLEGE TANDO BAGO"
+    },
+    {
+        "id": 296,
+        "name": "GOVERNMENT MIR GHULAM MUHAMMAD TALPUR DEGREE COLLEGE  TANDO BAGO  BADIN"
+    },
+    {
+        "id": 169,
+        "name": "GOVERNMENT MODEL COLLEGE MIRPURKHAS"
+    },
+    {
+        "id": 196,
+        "name": "GOVERNMENT MUSLIM SCIENCE DEGREE COLLEGE   HYDERABAD"
+    },
+    {
+        "id": 294,
+        "name": "GOVERNMENT NATIONAL AGRO TECHNICAL TEACHERS TRAINING COLLEGE  HYDERABAD"
+    },
+    {
+        "id": 97,
+        "name": "GOVERNMENT NUZRAT GIRLS COLLEGE  HYDERABAD"
+    },
+    {
+        "id": 204,
+        "name": "GOVERNMENT PAKISTAN DEGREE COLLEGE SAEEDPUR"
+    },
+    {
+        "id": 209,
+        "name": "GOVERNMENT PIR ILLAHI BUX LAW COLLEGE  DADU"
+    },
+    {
+        "id": 176,
+        "name": "GOVERNMENT S.M DEGREE COLLEGE TANDO ALLAH YAR"
+    },
+    {
+        "id": 158,
+        "name": "GOVERNMENT SACHAL SARMAST ARTS/  COMMERCE COLLEGE HYDERABAD"
+    },
+    {
+        "id": 246,
+        "name": "GOVERNMENT SACHAL SARMAST COMMERCE COLLEGE HIRABAD HYDERABAD"
+    },
+    {
+        "id": 167,
+        "name": "GOVERNMENT SARWARI ISLAMIA DEGREE COLLEGE  HALA"
+    },
+    {
+        "id": 100,
+        "name": "GOVERNMENT SHAH LATIF GIRLS COLLEGE LATIFABAD  HYDERABAD"
+    },
+    {
+        "id": 183,
+        "name": "GOVERNMENT SINDH COLLEGE OF COMMERCE HYDERABAD"
+    },
+    {
+        "id": 207,
+        "name": "GOVERNMENT SINDH LAW COLLEGE HYDERABAD"
+    },
+    {
+        "id": 276,
+        "name": "HISTORY"
+    },
+    {
+        "id": 92,
+        "name": "HYDERABAD INSTITUTE OF ARTS  SCIENCES & TECHNOLOGY"
+    },
+    {
+        "id": 305,
+        "name": "HYDERABAD LAW COLLEGE"
+    },
+    {
+        "id": 101,
+        "name": "IBNE RUSHID GOVERNMENT GIRLS COLLEGE  MIRPURKHAS"
+    },
+    {
+        "id": 283,
+        "name": "IMSA LAW COLLEGE HYDERABAD"
+    },
+    {
+        "id": 116,
+        "name": "INDUS COLLEGE OF LAW  HYDERABAD"
+    },
+    {
+        "id": 8,
+        "name": "INFORMATION TECHNOLOGY"
+    },
+    {
+        "id": 251,
+        "name": "INFORMATION TECHNOLOGY (FET)"
+    },
+    {
+        "id": 6,
+        "name": "INSTITUTE  OF BUSINESS ADMINISTRATION"
+    },
+    {
+        "id": 124,
+        "name": "INSTITUTE FOR ADVANCED RESEARCH STUDIES IN CHEMICAL SCIENCES"
+    },
+    {
+        "id": 43,
+        "name": "INSTITUTE OF ARTS & DESIGN"
+    },
+    {
+        "id": 59,
+        "name": "INSTITUTE OF BIOCHEMISTRY"
+    },
+    {
+        "id": 17,
+        "name": "INSTITUTE OF BIOTECHNOLOGY & GENETIC ENGINEERING"
+    },
+    {
+        "id": 275,
+        "name": "INSTITUTE OF BUSINESS STUDIES"
+    },
+    {
+        "id": 291,
+        "name": "INSTITUTE OF BUSINESS STUDIES HYDERABAD"
+    },
+    {
+        "id": 7,
+        "name": "INSTITUTE OF COMMERCE & MANAGEMENT"
+    },
+    {
+        "id": 70,
+        "name": "INSTITUTE OF ENGLISH LANGUAGE & LITERATURE"
+    },
+    {
+        "id": 28,
+        "name": "INSTITUTE OF GENDER STUDIES"
+    },
+    {
+        "id": 3,
+        "name": "INSTITUTE OF INFORMATION & COMMUNICATION TECHNOLOGY"
+    },
+    {
+        "id": 44,
+        "name": "INSTITUTE OF LANGUAGES"
+    },
+    {
+        "id": 88,
+        "name": "INSTITUTE OF LAW"
+    },
+    {
+        "id": 9,
+        "name": "INSTITUTE OF MATHEMATICS & COMPUTER SCIENCE"
+    },
+    {
+        "id": 81,
+        "name": "INSTITUTE OF MODEREN SCIENCES & ARTS  HYDERABAD"
+    },
+    {
+        "id": 62,
+        "name": "INSTITUTE OF PHARMACY"
+    },
+    {
+        "id": 69,
+        "name": "INSTITUTE OF PHYSICS"
+    },
+    {
+        "id": 68,
+        "name": "INSTITUTE OF PLANT SCIENCES"
+    },
+    {
+        "id": 32,
+        "name": "INTERNATIONAL RELATIONS"
+    },
+    {
+        "id": 306,
+        "name": "IQRA LAW COLLEGE MORO"
+    },
+    {
+        "id": 202,
+        "name": "KHURSHEED BEGUM GOVERNMENT GIRLS DEGREE COLLEGE  HYDERABAD"
+    },
+    {
+        "id": 76,
+        "name": "LAW"
+    },
+    {
+        "id": 302,
+        "name": "LAW (ALLAMA I.I. KAZI CAMPUS)"
+    },
+    {
+        "id": 289,
+        "name": "LEON S COLLEGE OF LAW NAWAB SHAH"
+    },
+    {
+        "id": 33,
+        "name": "LIBRARY INFORMATION SCIENCE & ARCHIVE STUDIES"
+    },
+    {
+        "id": 309,
+        "name": "LUMPUS LAW COLLEGE"
+    },
+    {
+        "id": 172,
+        "name": "M.D ORIENTAL AND ARTS DEGREE COLLEGE  HAJI MUHAMMAD Alam Palli"
+    },
+    {
+        "id": 213,
+        "name": "MAKHDOOM MUHAMMAD ZAMAN TALIB-UL-MOLA GOVT. LAW COLLEGE"
+    },
+    {
+        "id": 225,
+        "name": "MANAGEMENT INSTITUTE OF TECHNOLOGY"
+    },
+    {
+        "id": 64,
+        "name": "MATHEMATICS"
+    },
+    {
+        "id": 34,
+        "name": "MEDIA & COMMUNICATION STUDIES"
+    },
+    {
+        "id": 117,
+        "name": "MEDICAL LABORATORY TECHNOLOGY"
+    },
+    {
+        "id": 23,
+        "name": "MICROBIOLOGY"
+    },
+    {
+        "id": 164,
+        "name": "MIR GHULAM ALI KHAN TALPUR GOVERNMENT BOYS DEGREE COLLEGE TANDO MUHAMMAD KHAN"
+    },
+    {
+        "id": 307,
+        "name": "MIR HAJI KHUDA BUX KHAN TALPUR GOVERNMENT BOYS DEGREE COLLEGE TANDO JAM"
+    },
+    {
+        "id": 210,
+        "name": "MIRPURKHAS LAW COLLEGE"
+    },
+    {
+        "id": 80,
+        "name": "MOHTARMA BENAZIR BHUTTO SHAHEED CAMPUS DADU"
+    },
+    {
+        "id": 308,
+        "name": "MONARCH COLLEGE OF LAW"
+    },
+    {
+        "id": 93,
+        "name": "MUHAMMAD INSTITUTE OF SCIENCE & TECHNOLOGY  MIRPURKHAS"
+    },
+    {
+        "id": 58,
+        "name": "MUSLIM HISTORY"
+    },
+    {
+        "id": 123,
+        "name": "NATIONAL CENTRE OF EXCELLENCE  IN ANALYTICAL CHEMISTRY"
+    },
+    {
+        "id": 247,
+        "name": "NATIONAL CENTRE OF EXCELLENCE IN ANALYTICAL CHEMISTRY"
+    },
+    {
+        "id": 224,
+        "name": "NATIONAL COLLEGE OF ARTS AND MANAGEMENT SCIENCE HYDERABAD"
+    },
+    {
+        "id": 193,
+        "name": "NATIONAL DEGREE COLLEGE DHABEJI"
+    },
+    {
+        "id": 200,
+        "name": "NATIONAL INSTITUTE OF EMERGING SCIENCES MIRPURKHAS"
+    },
+    {
+        "id": 94,
+        "name": "NAZEER HASSAIN INSTITUTE OF EMERGING SCIENCE  MIRPURKHAS"
+    },
+    {
+        "id": 259,
+        "name": "NUTRITION & FOOD SCIENCE"
+    },
+    {
+        "id": 86,
+        "name": "NUTRITION & FOOD TECHNOLOGY"
+    },
+    {
+        "id": 290,
+        "name": "ORIENTAL LAW COLLEGE MEHRABPUR"
+    },
+    {
+        "id": 66,
+        "name": "PAKISTAN STUDIES CENTRE"
+    },
+    {
+        "id": 51,
+        "name": "PERSIAN"
+    },
+    {
+        "id": 233,
+        "name": "PHARMACEUTICAL CHEMISTRY"
+    },
+    {
+        "id": 229,
+        "name": "PHARMACEUTICS"
+    },
+    {
+        "id": 231,
+        "name": "PHARMACOGNOSY"
+    },
+    {
+        "id": 230,
+        "name": "PHARMACOLOGY"
+    },
+    {
+        "id": 63,
+        "name": "PHARMACY"
+    },
+    {
+        "id": 232,
+        "name": "PHARMACY PRACTICE"
+    },
+    {
+        "id": 46,
+        "name": "PHILOSOPHY"
+    },
+    {
+        "id": 281,
+        "name": "PHYSICAL THERAPY"
+    },
+    {
+        "id": 24,
+        "name": "PHYSICS"
+    },
+    {
+        "id": 25,
+        "name": "PHYSIOLOGY"
+    },
+    {
+        "id": 36,
+        "name": "POLITICAL SCIENCE"
+    },
+    {
+        "id": 258,
+        "name": "POULTRY FARMING AND MANAGEMENT"
+    },
+    {
+        "id": 115,
+        "name": "PROVINCIAL INSTITUTE OF TEACHERS EDUCATION (PITE)  NAWABSHAH"
+    },
+    {
+        "id": 75,
+        "name": "PROVINCIAL INSTITUTE OF TEACHERS EDUCATION (PITE) NAWABSHAH"
+    },
+    {
+        "id": 240,
+        "name": "PSYCHOLOGICAL TESTING AND GUIDANCE AND RESEARCH"
+    },
+    {
+        "id": 37,
+        "name": "PSYCHOLOGY"
+    },
+    {
+        "id": 38,
+        "name": "PUBLIC ADMINISTRATION"
+    },
+    {
+        "id": 262,
+        "name": "PUBLIC HEALTH"
+    },
+    {
+        "id": 216,
+        "name": "QAZI MIAN AHMED QURESHI LAW COLLEGE MORO"
+    },
+    {
+        "id": 208,
+        "name": "QUAID-E-AZAM LAW COLLEGE NAWABSHAH"
+    },
+    {
+        "id": 173,
+        "name": "SADIQUE FAQEER GOVERNMENT BOYS DEGREE COLLEGE  MITHI"
+    },
+    {
+        "id": 203,
+        "name": "SARDAR MUHAMMAD ALI SHAH GOVERNMENT GIRLS DEGREE COLLEGE  MATIARI"
+    },
+    {
+        "id": 237,
+        "name": "SCIENCE AND TECHNICAL EDUCATION"
+    },
+    {
+        "id": 79,
+        "name": "SH. PROF.BASHIR AHMED CHANNAR DEPT.OF MICROBIOLOGY"
+    },
+    {
+        "id": 170,
+        "name": "SHAH ABDUL LATIF GOVERNMENT DEGREE COLLEGE MIRPURKHAS"
+    },
+    {
+        "id": 217,
+        "name": "SHAHEED BENAZIR BHUTTO LAW COLLEGE"
+    },
+    {
+        "id": 214,
+        "name": "SHAN-E-AASI COLLEGE OF LAW TANDO ADAM"
+    },
+    {
+        "id": 16,
+        "name": "SINDH DEVELOPMENT STUDIES CENTRE"
+    },
+    {
+        "id": 287,
+        "name": "SINDH MEHRAN INSTITUTE OF LAW JAMSHORO"
+    },
+    {
+        "id": 87,
+        "name": "SINDH UNIVERSITY CAMPUS BHIT SHAH  IUPSMS"
+    },
+    {
+        "id": 85,
+        "name": "SINDH UNIVERSITY CAMPUS LARKANA"
+    },
+    {
+        "id": 77,
+        "name": "SINDH UNIVERSITY CAMPUS MIRPURKHAS"
+    },
+    {
+        "id": 84,
+        "name": "SINDH UNIVERSITY CAMPUS THATTA"
+    },
+    {
+        "id": 72,
+        "name": "SINDH UNIVERSITY LAAR CAMPUS @ BADIN"
+    },
+    {
+        "id": 47,
+        "name": "SINDHI"
+    },
+    {
+        "id": 211,
+        "name": "SISTECH LAW COLLEGE SUKKUR"
+    },
+    {
+        "id": 40,
+        "name": "SOCIAL WORK"
+    },
+    {
+        "id": 39,
+        "name": "SOCIOLOGY"
+    },
+    {
+        "id": 13,
+        "name": "SOFTWARE ENGINEERING"
+    },
+    {
+        "id": 252,
+        "name": "SOFTWARE ENGINEERING (FET)"
+    },
+    {
+        "id": 26,
+        "name": "STATISTICS"
+    },
+    {
+        "id": 83,
+        "name": "SUKKUR INSTITUTE OF SCIENCE & TECHNOLOGY  SUKKAR"
+    },
+    {
+        "id": 89,
+        "name": "SYED ALLAHANDO SHAH CAMPUS NAUSHAHRO FEROZ"
+    },
+    {
+        "id": 288,
+        "name": "TANDO ALLAHYAR LAW COLLEGE"
+    },
+    {
+        "id": 14,
+        "name": "TELECOMMUNICATION"
+    },
+    {
+        "id": 253,
+        "name": "TELECOMMUNICATION (FET)"
+    },
+    {
+        "id": 71,
+        "name": "TELEMEDICINE & E-HEALTH"
+    },
+    {
+        "id": 48,
+        "name": "URDU"
+    },
+    {
+        "id": 303,
+        "name": "ZEESHAN LAW COLLEGE HYDERABAD"
+    },
+    {
+        "id": 27,
+        "name": "ZOOLOGY"
+    }
+]

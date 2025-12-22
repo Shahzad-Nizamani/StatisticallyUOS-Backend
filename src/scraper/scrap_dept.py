@@ -1,21 +1,65 @@
-from selenium import webdriver
-import json 
+import json
+import subprocess
+import sys
 from bs4 import BeautifulSoup
+from src.models.department import department
 
-driver = webdriver.Chrome()
+# Function to download the HTML using curl or wget
+def download_html(url, output_file):
+    try:
+        # Try curl first
+        subprocess.run(["curl", "-L", "-o", output_file, url], check=True)
+    except FileNotFoundError:
+        # If curl is not available, try wget
+        try:
+            subprocess.run(["wget", "-O", output_file, url], check=True)
+        except FileNotFoundError:
+            print("Error: Neither curl nor wget is installed.")
+            sys.exit(1)
 
-driver.get("https://exam.usindh.edu.pk/v2/course.php")
-soup = BeautifulSoup(driver.page_source, "html.parser")
+# URL to download
+url = "https://exam.usindh.edu.pk/v2/course.php"
+html_file = "src/scraper/departments.html"
 
-departments = {}
+# Download HTML
+download_html(url, html_file)
 
-dept = soup.find_all('select')[1].find_all('option')
-for i in range(1,len(dept)):
+def get_departments():
+    # Read the downloaded HTML
+    with open(html_file, "r", encoding="utf-8") as f:
+        html = f.read()
 
-    did = f'D{i}'
-    departments[did] = dept[i].text.strip()
+    # Parse HTML with Beautiful Soup
+    soup = BeautifulSoup(html, "html.parser")
 
-with open("src\scraper\departments.json", 'w') as f:
-    json.dump(departments, f, indent=4)
+    # Find the select element for departments
+    select = soup.find("select", {"name": "dept_id"})
+    if not select:
+        print("Error: Could not find the department select element.")
+        sys.exit(1)
 
-driver.quit()
+    # Extract all <option> tags except the first one
+    departments = []
+    d_obj = []
+    id_counter = 1
+
+    for option in select.find_all("option"):
+        Did = option.get("value")
+        name = option.text.strip()
+
+        if Did and Did.isdigit():
+            Did = int(Did)
+            departments.append({"id": Did, "name": name})
+        
+            dept = department(id=id_counter, Did=Did, name=name)
+            d_obj.append(dept)
+
+            id_counter += 1
+
+    # Save to JSON
+    with open("src/scraper/departments.json", "w", encoding="utf-8") as f:
+        json.dump(departments, f, ensure_ascii=False, indent=4)
+
+    print(f"{len(departments)} departments saved to departments.json")
+
+    return d_obj
