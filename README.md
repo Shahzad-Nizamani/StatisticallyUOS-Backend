@@ -40,5 +40,5 @@ project_usindh/
 
 
 To Scrape & Seed the Database run:
-python -m src.seed.insert_departments
+ python -m src.seed.seed_dept
 
