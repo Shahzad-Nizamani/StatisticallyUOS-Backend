@@ -1,18 +1,15 @@
-from src.config.db_config import session, engine
-from src.db_models.department import department, base
-
-base.metadata.create_all(bind=engine)
+from sqlalchemy.dialects.postgresql import insert
+from src.config.db_config import session
+from src.db_models.department import department
 
 def save_dept_toDB(departments):
     db_session = session()
-
     try:
-        for d in departments:
-            exists = db_session.query(department).filter_by(Did=d.Did).first()
+        data = [d.model_dump() for d in departments]
 
-            if not exists:
-                db_session.add(department(**d.model_dump()))
+        bulk_insert = (insert(department).values(data).on_conflict_do_nothing(index_elements=["id"]))
 
+        db_session.execute(bulk_insert)
         db_session.commit()
 
     except Exception as e:
