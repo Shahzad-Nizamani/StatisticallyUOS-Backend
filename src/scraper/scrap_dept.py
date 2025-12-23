@@ -38,25 +38,25 @@ def get_departments():
         print("Error: Could not find the department select element.")
         sys.exit(1)
 
-    # Extract all <option> tags except the first one
     departments = []
-    d_obj = []
     id_counter = 1
 
     for option in select.find_all("option"):
+
         Did = option.get("value")
         name = option.text.strip()
 
         if Did and Did.isdigit():
             Did = int(Did)
-            departments.append({"id": Did, "name": name})
-        
-            dept = department(id=id_counter, Did=Did, name=name)
-            d_obj.append(dept)
+            dic = {
+                   "id" : id_counter,
+                    "Did": Did, 
+                    "name": name
+                    }
+            departments.append(dic)
 
             id_counter += 1
 
-
     print("Scraped all departments succesfully.")
 
-    return d_obj
+    return departments

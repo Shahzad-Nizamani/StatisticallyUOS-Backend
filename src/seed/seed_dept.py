@@ -4,8 +4,8 @@ import os
 
 def seed_dept():
 
-    departments = get_departments()
-    save_dept_toDB(departments)
+    scaped_departments = get_departments()
+    save_dept_toDB(scaped_departments)
 
     if os.path.exists(html_file):
         os.remove(html_file)

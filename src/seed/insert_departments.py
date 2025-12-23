@@ -5,10 +5,8 @@ from src.db_models.department import department
 def save_dept_toDB(departments):
     db_session = session()
     try:
-        data = [d.model_dump() for d in departments]
-
-        bulk_insert = (insert(department).values(data).on_conflict_do_nothing(index_elements=["id"]))
-
+        
+        bulk_insert = (insert(department).values(departments).on_conflict_do_nothing(index_elements=["id"]))
         db_session.execute(bulk_insert)
         db_session.commit()
 
