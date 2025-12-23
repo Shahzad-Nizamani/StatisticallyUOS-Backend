@@ -1,8 +1,6 @@
-import json
 import subprocess
 import sys
 from bs4 import BeautifulSoup
-from src.models.department import department
 
 # Function to download the HTML using curl or wget
 def download_html(url, output_file):
