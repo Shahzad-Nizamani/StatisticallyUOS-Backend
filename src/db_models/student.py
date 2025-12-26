@@ -1,17 +1,17 @@
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, Integer, Float
+from sqlalchemy import Column, String, Float, CheckConstraint
+from sqlalchemy.orm import relationship
+from department import Base
 
-base = declarative_base()
-
-class Student(base):
+class Student(Base):
 
     __tablename__ = "student"
 
-    id = Column(Integer)
-    rollno = Column(String, primary_key=True, index=True)
+    roll_no = Column(String, primary_key=True, index=True)
     name = Column(String, nullable=False)
     fname = Column(String, nullable=False)
-    surname = Column(String, nullable=False)
-    gender = Column(String, nullable=True)
-    cgpa = Column(Float, nullable=False)
-    percentage = Column(Float, nullable=False)
+    surname = Column(String)
+    gender = Column(String, CheckConstraint("gender IN('m', 'f')"), nullable=True)
+    cgpa = Column(Float)
+    percentage = Column(Float)
+
+    results = relationship("Result", back_populates="student") 
