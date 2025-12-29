@@ -12,3 +12,4 @@ class Department(Base):
     name = Column(String, nullable=False, unique=True)
 
     courses = relationship("Course", back_populates="department")
+    students = relationship("Student", back_populates="department")
