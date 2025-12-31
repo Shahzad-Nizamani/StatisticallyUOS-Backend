@@ -11,9 +11,9 @@ class Student(Base):
     fname = Column(String, nullable=False)
     surname = Column(String)
     gender = Column(String, CheckConstraint("gender IN('m', 'f')"))
-    did = Column(Integer, ForeignKey("department.did"), nullable=False)
     cgpa = Column(Float)
     percentage = Column(Float)
+    dept_name = Column(String, ForeignKey("department.name"), nullable=False)
 
     results = relationship("Result", back_populates="student") 
     department = relationship("Department", back_populates="students")
