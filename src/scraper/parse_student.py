@@ -30,6 +30,4 @@ def parsed_student(html):
     percentage = result[3].text
     student["percentage"] = percentage
 
-    print(student)
-
     return student
