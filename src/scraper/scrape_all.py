@@ -12,6 +12,7 @@ sys.path.insert(0, str(project_root))
 
 from scraper.parse_student import parsed_student
 from scraper.parse_course import parsed_course
+from scraper.parse_result import parsed_result
 import json
 
 def scrape_all():
@@ -51,7 +52,7 @@ def scrape_all():
             print(f"PROCESSING DEPARTMENT: {dept_name}")
             print(f"{'='*60}")
             
-            year = 4
+            year = 24
             
             while year <= 24:
                 print(f"\n--- Processing Year: 2K{year:02d} ---")
@@ -105,6 +106,11 @@ def scrape_all():
                                 for course in courses:
                                     course["dept_name"] = dept_name
                                     print(course)
+
+                                student_results = parsed_result(html)
+                                for result in student_results:
+                                    result["roll_no"] = rollno
+                                    print(result)
                                                               
                                 # Only append if parsing returned valid data
                                 if student:
@@ -160,4 +166,4 @@ def scrape_all():
         return None
 
 if __name__ == "__main__":
-    send_req()
+    scrape_all()
