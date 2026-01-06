@@ -1,6 +1,6 @@
-from sqlalchemy import Column, String, Float, Integer, CheckConstraint, ForeignKey
+from sqlalchemy import Column, String, Float, CheckConstraint, ForeignKey
 from sqlalchemy.orm import relationship
-from department import Base
+from config.db_config import Base
 
 class Student(Base):
 
@@ -13,7 +13,7 @@ class Student(Base):
     gender = Column(String, CheckConstraint("gender IN('m', 'f')"))
     cgpa = Column(Float)
     percentage = Column(Float)
-    dept_name = Column(String, ForeignKey("department.name"), nullable=False)
+    dept_name = Column(String, ForeignKey("department.dname"), nullable=False)
 
     results = relationship("Result", back_populates="student") 
     department = relationship("Department", back_populates="students")

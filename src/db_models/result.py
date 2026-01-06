@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, CHAR, CheckConstraint
 from sqlalchemy.orm import relationship
-from department import Base
+from config.db_config import Base
 
 class Result(Base):
 
@@ -18,12 +18,13 @@ class Result(Base):
         primary_key=True,
         index=True
     )
+    marks = Column(Integer, default=0)
     grade = Column(
         CHAR(2),
         CheckConstraint("grade IN ('A+', 'A', 'B', 'B+', 'C', 'C+', 'D', 'D+', 'F')"),
         nullable=False
     )
-    marks = Column(Integer, default=0)
+    
     semester = Column(Integer, nullable=False)
     year = Column(Integer, nullable=False)
     
