@@ -13,6 +13,8 @@ sys.path.insert(0, str(project_root))
 from scraper.parse_student import parsed_student
 from scraper.parse_course import parsed_course
 from scraper.parse_result import parsed_result
+from scraper.dept_names_and_codes import get_dept_codes
+
 import json
 
 def scrape_all():
@@ -40,10 +42,8 @@ def scrape_all():
         "X-Requested-With": "XMLHttpRequest"
     }
 
-    depts = {
-        "COMPUTER SCIENCE MEDICAL" : "CSM",
-        "COMPUTER SCIENCE ENGINEERING" : "CSE"
-    }
+    depts = get_dept_codes()
+    
     students = []
 
     try:
@@ -52,7 +52,7 @@ def scrape_all():
             print(f"PROCESSING DEPARTMENT: {dept_name}")
             print(f"{'='*60}")
             
-            year = 24
+            year = 4
             
             while year <= 24:
                 print(f"\n--- Processing Year: 2K{year:02d} ---")
