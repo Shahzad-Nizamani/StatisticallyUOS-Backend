@@ -1,8 +1,7 @@
 Tech:
 Backend: FastAPI
 Database: PostgreSQL (via SQLAlchemy ORM)
-Scraper: BeautifulSoup4 & Subprocess (Curl)
-Data Validation: Pydantic v2
+Scraper: Requests and BeautifulSoup4
 Environment: Python 3.10+
 
 How to set it up:
@@ -31,7 +30,6 @@ project_usindh/
 ├── src/
 │   ├── config/       # Database connection & Base
 │   ├── db_models/    # SQLAlchemy models
-│   ├── models/       # Pydantic schemas
 │   ├── scraper/      # BeautifulSoup logic & HTML files
 │   └── seed/         # Scripts to populate the DB
 ├── .env              # Secrets (ignored by git)
@@ -40,5 +38,5 @@ project_usindh/
 
 
 To Scrape & Seed the Database run:
- python -m src.seed.seed_dept
+scrap_and_seed_all.py
 
