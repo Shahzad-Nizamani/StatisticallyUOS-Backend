@@ -1,9 +1,8 @@
+import os
 from src.scraper.scrap_dept import get_departments, html_file
 from src.seed.insert_departments import save_dept_toDB
-import os
 
 def seed_dept():
-
     scaped_departments = get_departments()
     save_dept_toDB(scaped_departments)
 

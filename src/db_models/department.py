@@ -5,9 +5,11 @@ from config.db_config import Base
 class Department(Base):
 
     __tablename__ = "department"
+    __table_args__ = {'extend_existing': True}
 
-    did = Column(Integer, primary_key=True)
-    dname = Column(String, nullable=False, unique=True)
-
+    dname = Column(String, primary_key=True)
+    did = Column(Integer)
+    
     courses = relationship("Course", back_populates="department")
     students = relationship("Student", back_populates="department")
+    results = relationship("Result", back_populates="department")

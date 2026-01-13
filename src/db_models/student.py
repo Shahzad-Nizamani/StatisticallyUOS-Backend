@@ -5,6 +5,7 @@ from config.db_config import Base
 class Student(Base):
 
     __tablename__ = "student"
+    __table_args__ = {'extend_existing': True}
 
     roll_no = Column(String, primary_key=True, index=True)
     name = Column(String, nullable=False)

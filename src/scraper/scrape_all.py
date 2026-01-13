@@ -5,27 +5,25 @@ from bs4 import BeautifulSoup
 import time
 import sys
 from pathlib import Path
-
 # Add project root to Python path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
+import json
 from scraper.parse_student import parsed_student
 from scraper.parse_course import parsed_course
 from scraper.parse_result import parsed_result
-from scraper.dept_names_and_codes import get_dept_codes
-
-import json
+from seed.insert_all import insert_all_to_db
 
 def scrape_all():
-    session = requests.Session()
+    req_session = requests.Session()
     retry = Retry(
         total=3,
         backoff_factor=1,
         status_forcelist=[500, 502, 503, 504]
     )
     adapter = HTTPAdapter(max_retries=retry)
-    session.mount('https://', adapter)
+    req_session.mount('https://', adapter)
 
     url = "https://exam.usindh.edu.pk/v2/transcript_handler.php"
 
@@ -42,9 +40,10 @@ def scrape_all():
         "X-Requested-With": "XMLHttpRequest"
     }
 
-    depts = get_dept_codes()
-    
-    students = []
+    with open("src/scraper/rollno_codes.json", 'r') as f:
+        codes = json.load(f)
+
+    depts = codes
 
     try:
         for dept_name in depts:
@@ -53,8 +52,13 @@ def scrape_all():
             print(f"{'='*60}")
             
             year = 4
-            
+            seen_courses = set()
+
             while year <= 24:
+                students_list = []
+                results_list = []
+                courses_list = []
+
                 print(f"\n--- Processing Year: 2K{year:02d} ---")
                 n = 1
                 consecutive_not_found = 0
@@ -81,7 +85,7 @@ def scrape_all():
                             }
                             
                             print(f"Fetching: {rollno}, Part {part}...", end=" ")
-                            response = session.post(url, headers=headers, data=payload, timeout=30)
+                            response = req_session.post(url, headers=headers, data=payload, timeout=30)
                             print(f"Status: {response.status_code}")
                             
                             soup = BeautifulSoup(response.text, "html.parser")
@@ -92,6 +96,7 @@ def scrape_all():
                             if len(tables) != 3:
                                 print(f"  No more parts for this student")
                                 results = False
+                                continue
 
                             # Check if student exists (at least 2 tables expected)
                             if len(tables) >= 2:
@@ -99,23 +104,28 @@ def scrape_all():
                                 student_found = True
 
                                 student = parsed_student(html)
-                                student["dept_name"] = dept_name
-                                print(student)
-
                                 courses = parsed_course(html)
-                                for course in courses:
-                                    course["dept_name"] = dept_name
-                                    print(course)
-
                                 student_results = parsed_result(html)
-                                for result in student_results:
-                                    result["roll_no"] = rollno
-                                    print(result)
                                                               
                                 # Only append if parsing returned valid data
                                 if student:
-                                    students.append(student)
-                                    students_found_this_year += 1
+
+                                    for course in courses:
+                                        key = (course["course_code"], course["course_name"])
+                                        if key not in seen_courses:
+                                            course["dept_name"] = dept_name
+                                            courses_list.append(course)
+                                            seen_courses.add(key)
+
+                                        print(course)
+                                    
+                                    for result in student_results:
+                                        result["roll_no"] = rollno
+                                        result["dept_name"] = dept_name
+                                        result["year"] = exam_year
+                                        results_list.append(result)
+                                        print(result)
+
                                     print(f"  ✓ Student data saved")
                                 else:
                                     print(f"  ⚠ Parsing failed")
@@ -124,7 +134,7 @@ def scrape_all():
                             
                             part += 1
                             payload_year += 1
-                            time.sleep(3)  # Rate limiting
+                            time.sleep(2)  # Rate limiting
                         
                         # Update consecutive not found counter
                         if student_found:
@@ -132,16 +142,26 @@ def scrape_all():
                         else:
                             consecutive_not_found += 1
                             print(f"  Consecutive not found: {consecutive_not_found}/5")
-                    
+                        
                     except requests.exceptions.RequestException as e:
                         print(f"  ✗ Request failed: {e}")
                         
                     except Exception as e:
-                        print(f"  ✗ Error processing: {e}")
-                         
+                        print(f"  ✗ Error processing: {e}")  
+                    
+                    if student_found and student:
+                        student["dept_name"] = dept_name
+                        print(f"Final student: {student}")
+                        students_list.append(student)
+                        students_found_this_year += 1 
+
                     n += 1
                 
-                print(f"\nYear 2K{year:02d} complete: Found {students_found_this_year} students")
+                if students_list:
+                   insert_all_to_db(students_list, courses_list, results_list)
+                   print(f"\nYear 2K{year:02d} complete: Found {students_found_this_year} students")
+                else:
+                    print(f"\nNo students found in year 2K{year:02d}")
                 
                 # Move to next year
                 year += 1
@@ -149,15 +169,10 @@ def scrape_all():
             print(f"\n{'='*60}")
             print(f"Finished {dept_name}!")
         
-        output_file = "students.json"
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(students, f, indent=4, ensure_ascii=False)
-        
         print(f"\n{'='*60}")
         print(f"SCRAPING COMPLETE")
         print(f"{'='*60}")
-        print(f"✓ Successfully saved {len(students)} student records to {output_file}")
-        return students
+        print(f"✓ Successfully saved records to DB.")
 
     except Exception as e:
         print(f"\n✗ Fatal error: {e}")

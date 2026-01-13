@@ -6,17 +6,17 @@ sys.path.insert(0, str(project_root))
 
 import requests
 from bs4 import BeautifulSoup
-from config.db_config import session
+from config.db_config import session as db_session_factory
 from sqlalchemy import select
-from db_models.department import Department
-from db_models.course import Course
-from db_models.student import Student
-from db_models.result import Result
+from src.db_models.department import Department
+from src.db_models.course import Course
+from src.db_models.student import Student
+from src.db_models.result import Result
 import time
 import json
 
 def load_departments_from_db():
-    db_session = session()
+    db_session = db_session_factory()
     try:
         query = select(Department.did, Department.dname)
         depts = db_session.execute(query).mappings().all()
@@ -157,3 +157,6 @@ def get_dept_codes():
         json.dump(depts_and_rollno_codes, f, indent=4)
 
     return depts_and_rollno_codes
+
+if __name__ == '__main__':
+    get_dept_codes()

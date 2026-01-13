@@ -47,9 +47,8 @@ def get_departments():
         if Did and Did.isdigit():
             Did = int(Did)
             dic = {
-                   "id" : id_counter,
-                    "Did": Did, 
-                    "name": name
+                   "dname": name,
+                    "did": Did, 
                     }
             departments.append(dic)
 

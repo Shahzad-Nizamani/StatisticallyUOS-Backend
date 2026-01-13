@@ -5,6 +5,7 @@ from config.db_config import Base
 class Course(Base):
 
     __tablename__ = "course"
+    __table_args__ = {'extend_existing': True}
 
     course_code = Column(String, primary_key=True)
     course_name = Column(String, nullable=False)

@@ -5,6 +5,7 @@ from config.db_config import Base
 class Result(Base):
 
     __tablename__ = "result"
+    __table_args__ = {'extend_existing': True}
     
     roll_no = Column(
         String, 
@@ -24,9 +25,9 @@ class Result(Base):
         CheckConstraint("grade IN ('A+', 'A', 'B', 'B+', 'C', 'C+', 'D', 'D+', 'F')"),
         nullable=False
     )
-    
-    semester = Column(Integer, nullable=False)
+    dept_name  = Column(String, ForeignKey("department.dname"), nullable=False)
     year = Column(Integer, nullable=False)
     
     student = relationship("Student", back_populates="results")
     course = relationship("Course", back_populates="results")
+    department = relationship("Department", back_populates="results")
