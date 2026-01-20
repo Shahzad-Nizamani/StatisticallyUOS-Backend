@@ -13,7 +13,6 @@ def create_tables():
     print("===creating tables===")
 
     try:
-        print("recreating>>>>>")
         Base.metadata.create_all(bind=engine)
         print("✓ Tables created!")
     except Exception as e:

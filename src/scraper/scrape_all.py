@@ -14,9 +14,7 @@ from scraper.parse_student import parsed_student
 from scraper.parse_course import parsed_course
 from scraper.parse_result import parsed_result
 from seed.insert_all import insert_all_to_db
-from scraper.dept_names_and_codes import get_dept_codes
-import datetime
-
+from datetime import date
 def scrape_all():
     req_session = requests.Session()
     retry = Retry(
@@ -42,11 +40,11 @@ def scrape_all():
         "X-Requested-With": "XMLHttpRequest"
     }
 
-   # with open("src/scraper/rollno_codes.json", 'r') as f:
-    #    codes = json.load(f)
+    with open("src/scraper/rollno_codes.json", 'r') as f:
+        codes = json.load(f)
 
-    depts = {10: "CSM"}
-
+    depts = {501 :  "CSE"}
+    this_year = int(str(date.today().year)[-2:])
     try:
         for dept_id in depts:
             print(f"\n{'='*60}")
@@ -56,18 +54,18 @@ def scrape_all():
             year = 24
             seen_courses = set()
 
-            while year <= 24:
+            while year <= this_year:
                 students_list = []
                 results_list = []
                 courses_list = []
 
                 print(f"\n--- Processing Year: 2K{year:02d} ---")
-                n = 150
+                n = 160
                 consecutive_not_found = 0
                 students_found_this_year = 0
                 
                 # Process students in this year
-                while consecutive_not_found < 8:
+                while consecutive_not_found < 10:
                     student_found = False
                     
                     try:
@@ -141,7 +139,7 @@ def scrape_all():
                             consecutive_not_found = 0
                         else:
                             consecutive_not_found += 1
-                            print(f"  Consecutive not found: {consecutive_not_found}/5")
+                            print(f"  Consecutive not found: {consecutive_not_found}/10")
                         
                     except requests.exceptions.RequestException as e:
                         print(f"  ✗ Request failed: {e}")
@@ -167,7 +165,7 @@ def scrape_all():
                 year += 1
             
             print(f"\n{'='*60}")
-            print(f"Finished {dept_id}!")
+            print(f"Finished Department id {dept_id}!")
         
         print(f"\n{'='*60}")
         print(f"SCRAPING COMPLETE")
