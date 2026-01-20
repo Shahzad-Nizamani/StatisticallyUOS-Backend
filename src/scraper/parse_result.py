@@ -29,7 +29,7 @@ def parsed_result(html):
                 result["course_code"] = course_code
                 
                 if marks == "AB#":
-                    marks = None
+                    result["marks"] = 0
                 else: result["marks"] = marks
                 result["grade"] = grade
                 

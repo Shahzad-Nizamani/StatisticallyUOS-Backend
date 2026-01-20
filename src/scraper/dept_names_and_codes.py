@@ -6,8 +6,8 @@ sys.path.insert(0, str(project_root))
 
 import requests
 from bs4 import BeautifulSoup
-from config.db_config import session as db_session_factory
 from sqlalchemy import select
+from config.db_config import session as db_session_factory
 from src.db_models.department import Department
 from src.db_models.course import Course
 from src.db_models.student import Student
@@ -28,9 +28,9 @@ def load_departments_from_db():
 def get_dept_codes():
     depts = load_departments_from_db()
     depts_and_rollno_codes = {
-            "BUSINESS ADMINISTRATION" : "BBA",
-            "COMPUTER SCIENCE MEDICAL" : "CSM",
-            "COMPUTER SCIENCE ENGINEERING" : "CSE"
+            2 : "BBA",
+            10: "CSM",
+            501 : "CSE"
         }
     
     req_session = requests.Session()
@@ -145,7 +145,7 @@ def get_dept_codes():
             rollno = res_table.find_all("th")[2].text
             rollno_code = rollno.split("/")[1].split("/")[0]
             if rollno_code:
-                depts_and_rollno_codes[dept_name] = rollno_code
+                depts_and_rollno_codes[dept_id] = rollno_code
                 print(f"{dept_name} : {rollno_code}")
 
         except Exception as e:

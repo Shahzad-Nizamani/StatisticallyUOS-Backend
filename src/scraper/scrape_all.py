@@ -14,6 +14,8 @@ from scraper.parse_student import parsed_student
 from scraper.parse_course import parsed_course
 from scraper.parse_result import parsed_result
 from seed.insert_all import insert_all_to_db
+from scraper.dept_names_and_codes import get_dept_codes
+import datetime
 
 def scrape_all():
     req_session = requests.Session()
@@ -40,18 +42,18 @@ def scrape_all():
         "X-Requested-With": "XMLHttpRequest"
     }
 
-    with open("src/scraper/rollno_codes.json", 'r') as f:
-        codes = json.load(f)
+   # with open("src/scraper/rollno_codes.json", 'r') as f:
+    #    codes = json.load(f)
 
-    depts = codes
+    depts = {10: "CSM"}
 
     try:
-        for dept_name in depts:
+        for dept_id in depts:
             print(f"\n{'='*60}")
-            print(f"PROCESSING DEPARTMENT: {dept_name}")
+            print(f"PROCESSING DEPARTMENT WITH ID: {dept_id}")
             print(f"{'='*60}")
             
-            year = 4
+            year = 24
             seen_courses = set()
 
             while year <= 24:
@@ -60,12 +62,12 @@ def scrape_all():
                 courses_list = []
 
                 print(f"\n--- Processing Year: 2K{year:02d} ---")
-                n = 1
+                n = 150
                 consecutive_not_found = 0
                 students_found_this_year = 0
                 
                 # Process students in this year
-                while consecutive_not_found < 5:
+                while consecutive_not_found < 8:
                     student_found = False
                     
                     try:
@@ -77,7 +79,7 @@ def scrape_all():
                         while results:
                             exam_year = f"20{payload_year:02d}"
                             
-                            rollno = f"2K{year}/{depts[dept_name]}/{n}"
+                            rollno = f"2K{year}/{depts[dept_id]}/{n}"
                             payload = {
                                 "roll_no": rollno,
                                 "exam_year": exam_year,
@@ -113,7 +115,6 @@ def scrape_all():
                                     for course in courses:
                                         key = (course["course_code"], course["course_name"])
                                         if key not in seen_courses:
-                                            course["dept_name"] = dept_name
                                             courses_list.append(course)
                                             seen_courses.add(key)
 
@@ -121,7 +122,6 @@ def scrape_all():
                                     
                                     for result in student_results:
                                         result["roll_no"] = rollno
-                                        result["dept_name"] = dept_name
                                         result["year"] = exam_year
                                         results_list.append(result)
                                         print(result)
@@ -150,7 +150,7 @@ def scrape_all():
                         print(f"  ✗ Error processing: {e}")  
                     
                     if student_found and student:
-                        student["dept_name"] = dept_name
+                        student["dept_id"] = dept_id
                         print(f"Final student: {student}")
                         students_list.append(student)
                         students_found_this_year += 1 
@@ -167,7 +167,7 @@ def scrape_all():
                 year += 1
             
             print(f"\n{'='*60}")
-            print(f"Finished {dept_name}!")
+            print(f"Finished {dept_id}!")
         
         print(f"\n{'='*60}")
         print(f"SCRAPING COMPLETE")
@@ -175,7 +175,7 @@ def scrape_all():
         print(f"✓ Successfully saved records to DB.")
 
     except Exception as e:
-        print(f"\n✗ Fatal error: {e}")
+        print(f"\n Fatal error: {e}")
         import traceback
         traceback.print_exc()
         return None
