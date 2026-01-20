@@ -7,7 +7,7 @@ def save_dept_toDB(departments):
     db_session = session()
     try:
         
-        bulk_insert = (insert(Department).values(departments).on_conflict_do_nothing(index_elements=["dname"]))
+        bulk_insert = (insert(Department).values(departments).on_conflict_do_nothing(index_elements=["did"]))
         db_session.execute(bulk_insert)
 
         db_session.commit()

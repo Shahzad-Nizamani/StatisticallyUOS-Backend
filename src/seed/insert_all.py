@@ -21,7 +21,7 @@ def insert_all_to_db(students, courses, results):
         print(f"Successfully processed {len(students)} students, {len(courses)} courses, {len(results)} results")
 
     except Exception as e:
-        print(f"Error while inserting all {e}")
+        print(f"Error while inserting all: {e}")
         db_session.rollback()
         raise
 
