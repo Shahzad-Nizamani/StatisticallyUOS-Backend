@@ -43,15 +43,16 @@ def scrape_all():
     with open("src/scraper/rollno_codes.json", 'r') as f:
         codes = json.load(f)
 
-    depts = {501 :  "CSE"}
+    depts = codes
     this_year = int(str(date.today().year)[-2:])
+
     try:
         for dept_id in depts:
             print(f"\n{'='*60}")
             print(f"PROCESSING DEPARTMENT WITH ID: {dept_id}")
             print(f"{'='*60}")
-            
-            year = 24
+
+            year = 4
             seen_courses = set()
 
             while year <= this_year:
@@ -60,7 +61,7 @@ def scrape_all():
                 courses_list = []
 
                 print(f"\n--- Processing Year: 2K{year:02d} ---")
-                n = 160
+                n = 1
                 consecutive_not_found = 0
                 students_found_this_year = 0
                 
@@ -173,7 +174,6 @@ def scrape_all():
         print(f"✓ Successfully saved records to DB.")
 
     except Exception as e:
-        print(f"\n Fatal error: {e}")
         import traceback
         traceback.print_exc()
         return None
