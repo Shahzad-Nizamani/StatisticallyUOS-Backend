@@ -52,7 +52,7 @@ def scrape_all():
             print(f"PROCESSING DEPARTMENT WITH ID: {dept_id}")
             print(f"{'='*60}")
 
-            year = 4
+            year = 20
             seen_courses = set()
 
             while year <= this_year:
@@ -167,6 +167,7 @@ def scrape_all():
             
             print(f"\n{'='*60}")
             print(f"Finished Department id {dept_id}!")
+
         
         print(f"\n{'='*60}")
         print(f"SCRAPING COMPLETE")

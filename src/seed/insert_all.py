@@ -11,8 +11,12 @@ def insert_all_to_db(students, courses, results):
         bulk_insert_students = insert(Student).values(students).on_conflict_do_nothing(index_elements=["roll_no"])
         db_session.execute(bulk_insert_students)
 
-        bulk_insert_courses = insert(Course).values(courses).on_conflict_do_nothing(index_elements=["course_code"])
-        db_session.execute(bulk_insert_courses)  
+        if courses and any(c.get('course_code') for c in courses):
+            bulk_insert_courses = insert(Course).values(courses)
+            bulk_insert_courses = bulk_insert_courses.on_conflict_do_nothing(
+        index_elements=['course_code']
+    )
+            db_session.execute(bulk_insert_courses) 
 
         bulk_insert_results = insert(Result).values(results).on_conflict_do_nothing(index_elements=["roll_no", "course_code"])
         db_session.execute(bulk_insert_results) 
