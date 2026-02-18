@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 import time
 import sys
 from pathlib import Path
-# Add project root to Python path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
@@ -14,7 +13,7 @@ from scraper.parse_student import parsed_student
 from scraper.parse_course import parsed_course
 from scraper.parse_result import parsed_result
 from seed.insert_all import insert_all_to_db
-from datetime import date
+
 def scrape_all():
     req_session = requests.Session()
     retry = Retry(
@@ -44,7 +43,6 @@ def scrape_all():
         codes = json.load(f)
 
     depts = codes
-    this_year = int(str(date.today().year)[-2:])
 
     try:
         for dept_id in depts:
@@ -52,10 +50,10 @@ def scrape_all():
             print(f"PROCESSING DEPARTMENT WITH ID: {dept_id}")
             print(f"{'='*60}")
 
-            year = 20
+            year = 4
             seen_courses = set()
 
-            while year <= this_year:
+            while year <= 25:
                 students_list = []
                 results_list = []
                 courses_list = []

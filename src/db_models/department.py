@@ -9,5 +9,7 @@ class Department(Base):
 
     did = Column(Integer, primary_key=True)
     dname = Column(String)
+    dept_code = Column(String)
     
     students = relationship("Student", back_populates="department")
+    teachers = relationship("Teacher", back_populates="department")
