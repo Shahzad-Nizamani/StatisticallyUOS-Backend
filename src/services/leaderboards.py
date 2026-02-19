@@ -1,13 +1,7 @@
 from sqlalchemy import text
 from src.config.db_config import session
-
-def get_dept_id(db_session, department):
-    result = db_session.execute(text("SELECT did FROM DEPARTMENT WHERE DNAME = :department"), {"department": department}).fetchone()
-    return result[0] if result else None
-
-def get_course_code(db_session, course):
-    codes = db_session.execute(text("SELECT course_code FROM COURSE WHERE COURSE_NAME = :course"), {"course": course}).fetchall()
-    return tuple([row[0] for row in codes])
+from src.helpers.dept_id_fetcher import get_dept_id
+from src.helpers.course_codes_fetcher import get_course_code
 
 def cgpa_leaderboard(surname, department, limit, order):
     db_session = session()

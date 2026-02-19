@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>University of Sindh — Academic Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #c8a96e;
+    --accent2: #7c6fff;
+    --text: #e8e8f0;
+    --muted: #6b6b80;
+    --success: #4caf82;
+    --danger: #e05252;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(200,169,110,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,169,110,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 4rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    background: rgba(10,10,15,0.8);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+
+  .logo span { color: var(--text); font-weight: 400; }
+
+  .header-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    border-radius: 2px;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* Service Cards Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 4rem;
+  }
+
+  .service-card {
+    background: var(--surface);
+    padding: 2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.3s ease;
+  }
+
+  .service-card:hover { background: var(--surface2); }
+  .service-card:hover::before { height: 100%; }
+
+  .card-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .card-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .card-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    color: var(--muted);
+    font-size: 1.2rem;
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .service-card:hover .card-arrow {
+    transform: translate(3px, -3px);
+    color: var(--accent);
+  }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 100;
+    backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    width: 100%;
+    max-width: 580px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.25s ease;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.2rem;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--text); }
+
+  .modal-body { padding: 2rem; }
+
+  .form-group { margin-bottom: 1.5rem; }
+
+  label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  select, input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  select:focus, input:focus { border-color: var(--accent); }
+
+  .select-wrapper {
+    position: relative;
+  }
+
+  .select-wrapper::after {
+    content: '▾';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .btn:hover { opacity: 0.88; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Results */
+  .result-box {
+    margin-top: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .result-header {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .result-content {
+    padding: 1rem;
+    max-height: 380px;
+    overflow-y: auto;
+  }
+
+  .result-content::-webkit-scrollbar { width: 4px; }
+  .result-content::-webkit-scrollbar-track { background: var(--bg); }
+  .result-content::-webkit-scrollbar-thumb { background: var(--border); }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+
+  thead th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr { border-bottom: 1px solid rgba(42,42,58,0.5); }
+  tbody tr:hover { background: var(--surface2); }
+
+  tbody td {
+    padding: 0.6rem 0.75rem;
+    color: var(--text);
+    font-weight: 300;
+  }
+
+  .rank-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .cgpa-value {
+    font-family: 'DM Mono', monospace;
+    color: var(--success);
+    font-weight: 500;
+  }
+
+  .fail-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--accent);
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .fail-pct span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-top: 0.3rem;
+  }
+
+  .subject-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .subject-tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.75rem;
+    font-size: 0.78rem;
+    color: var(--text);
+    font-weight: 300;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .loading::after {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-left: 8px;
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+  }
+
+  .error-msg {
+    padding: 1rem;
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-family: 'DM Mono', monospace;
+    text-align: center;
+  }
+
+  .inline-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .inline-row { grid-template-columns: 1fr; }
+    main { padding: 2rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">University <span>of Sindh</span></div>
+  <div class="header-tag">Academic Portal v1.0</div>
+</header>
+
+<main>
+  <div class="hero">
+    <span class="hero-eyebrow">Data Intelligence System</span>
+    <h1>Academic <em>Analytics</em><br>Dashboard</h1>
+    <p>Explore student performance, leaderboards, subject analytics, and faculty data across all departments.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card" onclick="openModal('cgpa')">
+      <div class="card-number">01 / 05</div>
+      <span class="card-icon">🏆</span>
+      <div class="card-title">CGPA Leaderboard</div>
+      <div class="card-desc">Rank students by CGPA across departments and batches. Filter by surname or department.</div>
+      <div class="card-arrow">↗</div>
+    </div>
+
+    <div class="service-card" onclick="openModal('subject')">
+      <div class="card-number">02 / 05</div>
+      <span class="card-icon">📊</span>
+      <div class="card-title">Subject Leaderboard</div>
+      <div class="card-desc">Top performers in a specific subject. Filter by department, batch, and student surname.</div>
+      <div class="card-arrow">↗</div>
+    </div>
+
+    <div class="service-card" onclick="openModal('failpct')">
+      <div class="card-number">03 / 05</div>
+      <span class="card-icon">📉</span>
+      <div class="card-title">Fail Percentage</div>
+      <div class="card-desc">Calculate the failure rate for any subject within a specific department.</div>
+      <div class="card-arrow">↗</div>
+    </div>
+
+    <div class="service-card" onclick="openModal('subjects')">
+      <div class="card-number">04 / 05</div>
+      <span class="card-icon">📚</span>
+      <div class="card-title">Fetch Subjects</div>
+      <div class="card-desc">Browse all subjects offered to a department's batch. Optionally filter by academic year.</div>
+      <div class="card-arrow">↗</div>
+    </div>
+
+    <div class="service-card" onclick="openModal('teachers')">
+      <div class="card-number">05 / 05</div>
+      <span class="card-icon">👨‍🏫</span>
+      <div class="card-title">Faculty Directory</div>
+      <div class="card-desc">Browse teachers by department. View individual faculty profiles by ID.</div>
+      <div class="card-arrow">↗</div>
+    </div>
+  </div>
+</main>
+
+<!-- CGPA Leaderboard Modal -->
+<div class="modal-overlay" id="modal-cgpa">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">CGPA Leaderboard</div>
+      <button class="modal-close" onclick="closeModal('cgpa')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Department</label>
+        <div class="select-wrapper">
+          <select id="cgpa-dept"><option value="">All Departments</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Surname (optional)</label>
+        <input type="text" id="cgpa-surname" placeholder="e.g. MEMON">
+      </div>
+      <div class="inline-row">
+        <div class="form-group">
+          <label>Limit</label>
+          <input type="number" id="cgpa-limit" value="10" min="1" max="100">
+        </div>
+        <div class="form-group">
+          <label>Order</label>
+          <div class="select-wrapper">
+            <select id="cgpa-order">
+              <option value="desc">Highest First</option>
+              <option value="asc">Lowest First</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="btn" onclick="fetchCGPA()">Run Query</button>
+      <div id="cgpa-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Subject Leaderboard Modal -->
+<div class="modal-overlay" id="modal-subject">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Subject Leaderboard</div>
+      <button class="modal-close" onclick="closeModal('subject')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Department *</label>
+        <div class="select-wrapper">
+          <select id="subj-dept" onchange="loadSubjects('subj')"><option value="">Select Department</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Batch *</label>
+        <div class="select-wrapper">
+          <select id="subj-batch" onchange="loadSubjects('subj')"><option value="">Select Batch</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Course *</label>
+        <div class="select-wrapper">
+          <select id="subj-course"><option value="">Select dept & batch first</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Surname (optional)</label>
+        <input type="text" id="subj-surname" placeholder="e.g. MEMON">
+      </div>
+      <div class="inline-row">
+        <div class="form-group">
+          <label>Limit</label>
+          <input type="number" id="subj-limit" value="10" min="1">
+        </div>
+        <div class="form-group">
+          <label>Order</label>
+          <div class="select-wrapper">
+            <select id="subj-order">
+              <option value="desc">Highest First</option>
+              <option value="asc">Lowest First</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="btn" onclick="fetchSubjectLeaderboard()">Run Query</button>
+      <div id="subj-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Fail Percentage Modal -->
+<div class="modal-overlay" id="modal-failpct">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Fail Percentage</div>
+      <button class="modal-close" onclick="closeModal('failpct')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Department *</label>
+        <div class="select-wrapper">
+          <select id="fail-dept" onchange="loadSubjects('fail')"><option value="">Select Department</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Batch *</label>
+        <div class="select-wrapper">
+          <select id="fail-batch" onchange="loadSubjects('fail')"><option value="">Select Batch</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Course *</label>
+        <div class="select-wrapper">
+          <select id="fail-course"><option value="">Select dept & batch first</option></select>
+        </div>
+      </div>
+      <button class="btn" onclick="fetchFailPct()">Calculate</button>
+      <div id="fail-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Fetch Subjects Modal -->
+<div class="modal-overlay" id="modal-subjects">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Fetch Subjects</div>
+      <button class="modal-close" onclick="closeModal('subjects')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Department *</label>
+        <div class="select-wrapper">
+          <select id="fs-dept"><option value="">Select Department</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Batch *</label>
+        <div class="select-wrapper">
+          <select id="fs-batch"><option value="">Select Batch</option></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Year (optional)</label>
+        <input type="number" id="fs-year" placeholder="e.g. 2023">
+      </div>
+      <button class="btn" onclick="fetchSubjectsList()">Fetch Subjects</button>
+      <div id="fs-result"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Teachers Modal -->
+<div class="modal-overlay" id="modal-teachers">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Faculty Directory</div>
+      <button class="modal-close" onclick="closeModal('teachers')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Department *</label>
+        <div class="select-wrapper">
+          <select id="teacher-dept"><option value="">Select Department</option></select>
+        </div>
+      </div>
+      <button class="btn" onclick="fetchTeachers()">Fetch Faculty</button>
+      <div id="teacher-result"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BASE = 'http://127.0.0.1:8000';
+
+const DEPARTMENTS = [
+  "BUSINESS ADMINSTRATION","COMPUTER SCIENCE MEDICAL","COMPUTER SCIENCE ENGINEERING",
+  "ANTHROPOLOGY & ARCHAEOLOGY","APPLIED LINGUISTICS","ARABIC","ARTIFICIAL INTELLIGENCE",
+  "BANKING AND FINANCE","BIOCHEMISTRY","BIOTECHNOLOGY","BOTANY",
+  "CENTRE FOR  PHYSICAL EDUCATION  HEALTH & SPORTS SCIENCE",
+  "CENTRE FOR ENVIRONMENTAL SCIENCES","CENTRE FOR RURAL DEVELOPMENT COMMUNICATION",
+  "CHEMISTRY","COASTAL AND MARINE SCIENCES","COMMERCE",
+  "COMPARATIVE RELIGION & ISLAMIC CULTURE","CRIMINOLOGY","DATA SCIENCE",
+  "DISASTER MANAGEMENT","EASTERN MEDICINE AND SURGERY","ECONOMICS",
+  "ECONOMICS AND FINANCE","ENGLISH LANGUAGE & LITERATURE","ENGLISH LANGUAGE TEACHING",
+  "FISHERIES AND AQUATIC SCIENCES","FORENSIC ACCOUNTING AND FRAUD EXAMINATION",
+  "GENDER STUDIES","GENETIC ENGINEERING","GEOGRAPHY","GEOLOGY","HISTORY",
+  "INFORMATION TECHNOLOGY (FET)","INTERNATIONAL RELATIONS",
+  "LIBRARY INFORMATION SCIENCE & ARCHIVE STUDIES","MATHEMATICS",
+  "MEDIA & COMMUNICATION STUDIES","MEDICAL LABORATORY TECHNOLOGY","MICROBIOLOGY",
+  "MUSLIM HISTORY","NUTRITION & FOOD SCIENCE","PAKISTAN STUDIES CENTRE","PHILOSOPHY",
+  "PHYSICS","PHYSIOLOGY","POLITICAL SCIENCE","PSYCHOLOGY","PUBLIC ADMINISTRATION",
+  "PUBLIC HEALTH","SINDH UNIVERSITY CAMPUS THATTA","SINDH UNIVERSITY LAAR CAMPUS @ BADIN",
+  "SINDHI","SOCIAL WORK","SOCIOLOGY","SOFTWARE ENGINEERING (FET)","STATISTICS","URDU","ZOOLOGY"
+];
+
+const BATCHES = Array.from({length: 21}, (_, i) => `2K${String(4 + i).padStart(2,'0')}`);
+
+function populateDropdown(selectId, options, emptyLabel = 'Select...') {
+  const sel = document.getElementById(selectId);
+  if (!sel) return;
+  const current = sel.value;
+  sel.innerHTML = `<option value="">${emptyLabel}</option>` +
+    options.map(o => `<option value="${o}" ${o === current ? 'selected' : ''}>${o}</option>`).join('');
+}
+
+// Populate all dept/batch dropdowns on load
+const deptSelects = ['cgpa-dept','subj-dept','fail-dept','fs-dept','teacher-dept'];
+const batchSelects = ['subj-batch','fail-batch','fs-batch'];
+
+deptSelects.forEach(id => populateDropdown(id, DEPARTMENTS, 'All Departments'));
+batchSelects.forEach(id => populateDropdown(id, BATCHES, 'Select Batch'));
+document.getElementById('cgpa-dept').querySelector('option').textContent = 'All Departments';
+
+async function loadSubjects(prefix) {
+  const dept = document.getElementById(`${prefix}-dept`).value;
+  const batch = document.getElementById(`${prefix}-batch`).value;
+  const courseSelect = document.getElementById(`${prefix}-course`);
+
+  if (!dept || !batch) {
+    courseSelect.innerHTML = '<option value="">Select dept & batch first</option>';
+    return;
+  }
+
+  courseSelect.innerHTML = '<option value="">Loading...</option>';
+  try {
+    const res = await fetch(`${BASE}/fetch_subjects/${encodeURIComponent(dept)}/${batch}`);
+    const data = await res.json();
+    if (data.subjects && data.subjects.length > 0) {
+      courseSelect.innerHTML = '<option value="">Select Course</option>' +
+        data.subjects.map(s => `<option value="${s}">${s}</option>`).join('');
+    } else {
+      courseSelect.innerHTML = '<option value="">No subjects found</option>';
+    }
+  } catch(e) {
+    courseSelect.innerHTML = '<option value="">Error loading subjects</option>';
+  }
+}
+
+function openModal(id) {
+  document.getElementById(`modal-${id}`).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(`modal-${id}`).classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) o.classList.remove('active'); });
+});
+
+function showLoading(id) {
+  document.getElementById(id).innerHTML = '<div class="loading">Querying database</div>';
+}
+
+function showError(id, msg) {
+  document.getElementById(id).innerHTML = `<div class="error-msg">⚠ ${msg}</div>`;
+}
+
+async function fetchCGPA() {
+  const dept = document.getElementById('cgpa-dept').value;
+  const surname = document.getElementById('cgpa-surname').value.trim();
+  const limit = document.getElementById('cgpa-limit').value;
+  const order = document.getElementById('cgpa-order').value;
+
+  let params = new URLSearchParams({ limit, order });
+  if (dept) params.append('department', dept);
+  if (surname) params.append('surname', surname);
+
+  showLoading('cgpa-result');
+  try {
+    const res = await fetch(`${BASE}/cgpa_leaderboard?${params}`);
+    const data = await res.json();
+    if (!data.length) { showError('cgpa-result', 'No results found'); return; }
+    
+    document.getElementById('cgpa-result').innerHTML = `
+      <div class="result-box">
+        <div class="result-header"><span>Results</span><span>${data.length} students</span></div>
+        <div class="result-content">
+          <table>
+            <thead><tr><th>#</th><th>Name</th><th>Roll No</th><th>CGPA</th></tr></thead>
+            <tbody>${data.map((s,i) => `
+              <tr>
+                <td class="rank-badge">${String(i+1).padStart(2,'0')}</td>
+                <td>${s.name || '—'}</td>
+                <td style="font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--muted)">${s.roll_no}</td>
+                <td class="cgpa-value">${s.cgpa ?? '—'}</td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>`;
+  } catch(e) { showError('cgpa-result', 'Failed to fetch data. Is the server running?'); }
+}
+
+async function fetchSubjectLeaderboard() {
+  const dept = document.getElementById('subj-dept').value;
+  const course = document.getElementById('subj-course').value;
+  const surname = document.getElementById('subj-surname').value.trim();
+  const limit = document.getElementById('subj-limit').value;
+  const order = document.getElementById('subj-order').value;
+
+  if (!dept || !course) { showError('subj-result', 'Department and Course are required'); return; }
+
+  let params = new URLSearchParams({ department: dept, course, limit, order });
+  if (surname) params.append('surname', surname);
+
+  showLoading('subj-result');
+  try {
+    const res = await fetch(`${BASE}/subject_leaderboard?${params}`);
+    const data = await res.json();
+    if (!data.length) { showError('subj-result', 'No results found'); return; }
+
+    document.getElementById('subj-result').innerHTML = `
+      <div class="result-box">
+        <div class="result-header"><span>Results</span><span>${data.length} students</span></div>
+        <div class="result-content">
+          <table>
+            <thead><tr><th>#</th><th>Name</th><th>Roll No</th><th>Marks</th><th>Grade</th></tr></thead>
+            <tbody>${data.map((s,i) => `
+              <tr>
+                <td class="rank-badge">${String(i+1).padStart(2,'0')}</td>
+                <td>${s.name || '—'}</td>
+                <td style="font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--muted)">${s.roll_no}</td>
+                <td class="cgpa-value">${s.marks ?? '—'}</td>
+                <td style="color:var(--accent);font-family:'DM Mono',monospace">${s.grade ?? '—'}</td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>`;
+  } catch(e) { showError('subj-result', 'Failed to fetch data'); }
+}
+
+async function fetchFailPct() {
+  const dept = document.getElementById('fail-dept').value;
+  const course = document.getElementById('fail-course').value;
+
+  if (!dept || !course) { showError('fail-result', 'Department and Course are required'); return; }
+
+  showLoading('fail-result');
+  try {
+    const res = await fetch(`${BASE}/subjects/${encodeURIComponent(dept)}/${encodeURIComponent(course)}`);
+    const data = await res.json();
+
+    if (typeof data === 'string') { showError('fail-result', data); return; }
+
+    const pct = typeof data === 'object' ? data.fail_percentage : data;
+    document.getElementById('fail-result').innerHTML = `
+      <div class="result-box">
+        <div class="result-header"><span>Fail Rate — ${course}</span></div>
+        <div class="fail-pct">${pct}%<span>of students failed this subject</span></div>
+      </div>`;
+  } catch(e) { showError('fail-result', 'Failed to fetch data'); }
+}
+
+async function fetchSubjectsList() {
+  const dept = document.getElementById('fs-dept').value;
+  const batch = document.getElementById('fs-batch').value;
+  const year = document.getElementById('fs-year').value;
+
+  if (!dept || !batch) { showError('fs-result', 'Department and Batch are required'); return; }
+
+  let url = `${BASE}/fetch_subjects/${encodeURIComponent(dept)}/${batch}`;
+  if (year) url += `?year=${year}`;
+
+  showLoading('fs-result');
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    document.getElementById('fs-result').innerHTML = `
+      <div class="result-box">
+        <div class="result-header"><span>${data.department} — ${data.batch}</span><span>${data.total} subjects</span></div>
+        <div class="result-content">
+          <div class="subject-list">${data.subjects.map(s => `<div class="subject-tag">${s}</div>`).join('')}</div>
+        </div>
+      </div>`;
+  } catch(e) { showError('fs-result', 'Failed to fetch data'); }
+}
+
+async function fetchTeachers() {
+  const dept = document.getElementById('teacher-dept').value;
+  if (!dept) { showError('teacher-result', 'Please select a department'); return; }
+
+  showLoading('teacher-result');
+  try {
+    const res = await fetch(`${BASE}/teachers/${encodeURIComponent(dept)}`);
+    const data = await res.json();
+
+    if (!data || !data.length) { showError('teacher-result', 'No teachers found'); return; }
+
+    const keys = Object.keys(data[0]);
+    document.getElementById('teacher-result').innerHTML = `
+      <div class="result-box">
+        <div class="result-header"><span>Faculty</span><span>${data.length} teachers</span></div>
+        <div class="result-content">
+          <table>
+            <thead><tr>${keys.map(k => `<th>${k}</th>`).join('')}</tr></thead>
+            <tbody>${data.map(t => `<tr>${keys.map(k => `<td>${t[k] ?? '—'}</td>`).join('')}</tr>`).join('')}</tbody>
+          </table>
+        </div>
+      </div>`;
+  } catch(e) { showError('teacher-result', 'Failed to fetch data'); }
+}
+</script>
+</body>
+</html>

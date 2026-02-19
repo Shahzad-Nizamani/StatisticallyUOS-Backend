@@ -4,8 +4,18 @@ from src.services.get_teachers_by_deptID import get_teachers
 from src.services.get_teacher_by_TID import get_single_teacher
 from src.services.leaderboards import cgpa_leaderboard as service_cgpa_leaderboard
 from src.services.leaderboards import subject_wise_leaderboard
+from src.services.fail_pctg import calc_fail_pctg
+from src.helpers.subjects_fetcher import fetch_subjects
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/cgpa_leaderboard")
 def cgpa_leaderboard(
@@ -25,6 +35,18 @@ def subject_leaderboard(
     order: Optional[str] = "desc"
 ):
     return subject_wise_leaderboard(department=department, course=course, surname=surname, limit=limit, order=order)
+
+@app.get("/subjects/{dept}/{course}")
+def rate_subject_and_fail_pctg(dept, course):
+    return calc_fail_pctg(dept, course)
+
+@app.get("/fetch_subjects/{dept}/{batch}")
+def get_subjects(
+    dept:str,
+    batch:str,
+    year:Optional[int] = None
+    ):
+    return fetch_subjects(dept, batch, year)
 
 @app.get("/teachers/{dept_id}")
 def get_teachers_by_deptID(dept_id: int):
