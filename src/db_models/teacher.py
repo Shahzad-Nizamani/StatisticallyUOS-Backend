@@ -18,3 +18,4 @@ class Teacher(Base):
     dept_id = Column(Integer, ForeignKey('department.did'), nullable=False)
     
     department = relationship("Department", back_populates="teachers")
+    reviews = relationship("Teacher_review", back_populates="teacher")

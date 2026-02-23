@@ -11,3 +11,4 @@ class Course(Base):
     course_name = Column(String)
 
     results = relationship("Result", back_populates="course")
+    reviews = relationship("SubjectReview", back_populates="course")
