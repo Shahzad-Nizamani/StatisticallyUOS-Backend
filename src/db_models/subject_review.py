@@ -15,5 +15,6 @@ class Subject_review(Base):
     rating = Column(Integer, CheckConstraint("rating >= 1 AND rating <= 10"), nullable=False)
     review_msg = Column(String(500))
     course_code = Column(String(15), ForeignKey("course.course_code", ondelete="CASCADE"))
+    dept_id = Column(Integer, ForeignKey("department.did", ondelete="CASCADE"))
 
     course = relationship("Course", back_populates="reviews")
