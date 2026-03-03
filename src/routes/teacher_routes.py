@@ -5,8 +5,8 @@ router = APIRouter()
 
 @router.get("/rate_teacher/{tid}")
 def rate_teacher(tid: int):
-    return get_teachers_by_deptID(tid)
+    return get_teacher_by_tid(tid)
 
 @router.get("/teachers/{dept_id}")
 def get_teachers_by_deptID(dept_id: int):
-    return get_teacher_by_tid(dept_id)
+    return get_teachers_by_deptID(dept_id)

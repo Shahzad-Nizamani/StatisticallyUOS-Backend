@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 from src.config.db_config import Base
 
@@ -10,5 +10,5 @@ class Course(Base):
     course_code = Column(String, primary_key=True)
     course_name = Column(String)
 
-    results = relationship("Result", back_populates="course")
-    reviews = relationship("SubjectReview", back_populates="course")
+    results = relationship("result", back_populates="course")
+    reviews = relationship("Subject_review", back_populates="course")

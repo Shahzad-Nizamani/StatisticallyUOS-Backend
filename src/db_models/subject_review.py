@@ -2,8 +2,7 @@ from sqlalchemy import Column, String, Integer, ForeignKey, CheckConstraint, Ind
 from sqlalchemy.orm import relationship
 from src.config.db_config import Base
 
-
-class Subject_review(Base):
+class SubjectReview(Base):
     __tablename__ = "subject_review"
     __table_args__ = (
         Index('idx_subjetcReview_courseCode', 'course_code'),

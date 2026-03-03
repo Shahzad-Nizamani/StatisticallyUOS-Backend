@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.routes.cgpa_leaderboard import router as cgpa_router
-from src.routes.subject_routes import router as subject_router
+from src.routes.subject_overview import router as subject_router
 from src.routes.load_courses import router as load_courses_router
 from src.routes.teacher_routes import router as teacher_router
 from src.routes.all_time_subject_leaderboard import router as all_time_subject_leaderboard_router
