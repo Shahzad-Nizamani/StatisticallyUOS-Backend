@@ -1,6 +1,5 @@
 from src.config.db_config import session
 from sqlalchemy import text
-from src.helpers.dept_id_fetcher import get_dept_id
 
 def fetch_subject_reviews(dept_id, course):
     db_session = session()

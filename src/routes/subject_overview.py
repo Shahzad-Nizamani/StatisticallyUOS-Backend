@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from src.services.fail_pctg import calc_fail_pctg
-from src.services.subject_reviews import fetch_subject_reviews
+from src.services.fetch_subject_reviews import fetch_subject_reviews
 from src.pydantic_models.subject_review_model import SubjectReview
 from src.services.insert_subject_review import insert_subject_review
 
