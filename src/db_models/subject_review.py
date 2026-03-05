@@ -10,7 +10,7 @@ class SubjectReview(Base):
     )
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(25), nullable=False, default='Anonymous')
+    name = Column(String(25), nullable=False, default='anonymous')
     rating = Column(Integer, CheckConstraint("rating >= 1 AND rating <= 10"), nullable=False)
     review_msg = Column(String(500))
     course_code = Column(String(15), ForeignKey("course.course_code", ondelete="CASCADE"))
