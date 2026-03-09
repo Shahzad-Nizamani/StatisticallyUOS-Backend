@@ -6,6 +6,8 @@ from src.routes.load_courses import router as load_courses_router
 from src.routes.teacher_routes import router as teacher_router
 from src.routes.all_time_subject_leaderboard import router as all_time_subject_leaderboard_router
 from src.routes.batch_wise_subject_laederboard import router as batch_wise_subject_laederboard_router
+from src.routes.photos import router as photos_router
+
 app = FastAPI()
 
 app.add_middleware(
@@ -21,3 +23,4 @@ app.include_router(all_time_subject_leaderboard_router)
 app.include_router(batch_wise_subject_laederboard_router)
 app.include_router(load_courses_router)
 app.include_router(teacher_router)
+app.include_router(photos_router)

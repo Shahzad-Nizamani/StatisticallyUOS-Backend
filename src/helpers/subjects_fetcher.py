@@ -1,8 +1,14 @@
 from sqlalchemy import text
 from src.config.db_config import session
 
-def fetch_subjects(dept_id, batch, year):
+def fetch_subjects(dept_id, batch, part):
     db_session = session()
+
+    year = batch[2:]
+    if len(year) == 1:
+        year = int(f"200{year}") + part-1
+    else:
+        year = int(f"20{year}") + part-1
 
     query = text("""
         SELECT DISTINCT c.* FROM course c 

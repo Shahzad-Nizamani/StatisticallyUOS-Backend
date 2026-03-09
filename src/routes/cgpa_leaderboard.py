@@ -6,9 +6,9 @@ router = APIRouter()
 
 @router.get("/cgpa_leaderboard")
 def cgpa_leaderboard(
+    dept_id: Optional[int] = None,
     surname: Optional[str] = None,
-    department: Optional[str] = None,
     limit: Optional[int] = 10,
     order: Optional[str] = "desc"
 ):
-    return service_cgpa_leaderboard(surname, department, limit, order)
+    return service_cgpa_leaderboard(dept_id, surname, limit, order)

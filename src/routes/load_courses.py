@@ -3,10 +3,10 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
-@router.get("/fetch_subjects/{dept_id}/{batch}/{year}")
+@router.get("/fetch_subjects/{dept_id}/{batch}/{part}")
 def get_subjects(
     dept_id:int,
     batch:str,
-    year:int
+    part:int
     ):
-    return fetch_subjects(dept_id, batch, year)
+    return fetch_subjects(dept_id, batch, part)
