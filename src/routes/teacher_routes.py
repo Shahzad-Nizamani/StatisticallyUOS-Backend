@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from src.services.fetch_teachers import fetch_teachers, get_teacher_by_tid
+from src.services.fetch_teachers import fetch_teachers_by_dept, get_teacher_by_tid
 from src.pydantic_models.teacher_review_model import TeacherReview
 from src.services.insert_teacher_review import insert_teacher_review
 from src.services.fetch_teacher_reviews import fetch_teacher_reviews
@@ -7,9 +7,9 @@ from fastapi.requests import Request
 
 router = APIRouter()
 
-@router.get("/teachers")
-def get_all_teachers(request: Request):
-    return fetch_teachers(request)
+@router.get("/teachers/{dept_id}")
+def get_teachers_by_dept_id(dept_id:int, request: Request):
+    return fetch_teachers_by_dept(dept_id, request)
 
 
 @router.get("/single_teacher/{tid}")
