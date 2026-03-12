@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, ForeignKey, CheckConstraint, Index
+from sqlalchemy import Column, String, Integer, ForeignKey, CheckConstraint, Index, DateTime
 from sqlalchemy.orm import relationship
 from src.config.db_config import Base
 
@@ -15,5 +15,6 @@ class SubjectReview(Base):
     review_msg = Column(String(500))
     course_code = Column(String(15), ForeignKey("course.course_code", ondelete="CASCADE"))
     dept_id = Column(Integer, ForeignKey("department.did", ondelete="CASCADE"))
+    created_at = Column(DateTime, nullable=True)
 
     course = relationship("Course", back_populates="reviews")
