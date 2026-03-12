@@ -47,7 +47,7 @@ def fetch_teachers_by_dept(dept_id: int, request: Request):
     if not teachers:
         return {"teachers": []}
 
-    dept_files = list(BASE_DIR.glob(f"*_{dept_id}.jpg"))
+    dept_files = list(BASE_DIR.glob(f"*_{dept_id}.webp"))
 
     def find_photo(name):
         name_words = [w.lower() for w in name.split() if len(w) > 2]
