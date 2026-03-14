@@ -35,13 +35,22 @@ def get_teacher_by_tid(tid, request: Request):
     )
     return teacher_dict
 
-
 def fetch_teachers_by_dept(dept_id: int, request: Request):
     db_session = session()
+    
     teachers = db_session.execute(
-        text("SELECT tid, name, role, dept_id FROM teacher WHERE dept_id = :dept_id"),
+        text("""
+            SELECT t.tid, t.name, t.role, t.dept_id,
+                   COALESCE(ROUND(AVG(tr.rating), 2), 0) AS avg_rating,
+                   COUNT(tr.rating) as total_reviews
+            FROM teacher t
+            LEFT JOIN teacher_review tr ON t.tid = tr.tid
+            WHERE t.dept_id = :dept_id
+            GROUP BY t.tid, t.name, t.role, t.dept_id
+        """),
         {"dept_id": dept_id}
     ).fetchall()
+    
     db_session.close()
 
     if not teachers:
