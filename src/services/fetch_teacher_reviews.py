@@ -6,13 +6,14 @@ def fetch_teacher_reviews(tid):
     
     try:        
         query = text('''
-            SELECT 
+            SELECT
+                id,
                 name, 
                 rating, 
                 review_msg, 
                 created_at,
                 AVG(rating) OVER () as avg_rating,
-                COUNT(*) FILTER (WHERE rating = 1) OVER () as zero_rating_count,
+                COUNT(*) FILTER (WHERE rating = 1) OVER () as one_rating_count,
                 COUNT(*) FILTER (WHERE rating = 5) OVER () as five_rating_count
             FROM teacher_review 
             WHERE tid = :tid
@@ -21,15 +22,16 @@ def fetch_teacher_reviews(tid):
         rows = reviews.fetchall()
 
         return {
-            "avg_rating": round(float(rows[0][4]), 1) if rows else 0,
-            "zero_rating_count": rows[0][5] if rows else 0,
-            "five_rating_count": rows[0][6] if rows else 0,
+            "avg_rating": round(float(rows[0][5]), 1) if rows else 0,
+            "one_rating_count": rows[0][6] if rows else 0,
+            "five_rating_count": rows[0][7] if rows else 0,
             "reviews": [
                 {
-                    "name": row[0],
-                    "rating": row[1],
-                    "review_msg": row[2],
-                    "created_at": row[3].strftime("%Y-%m-%d") if row[3] else None
+                    "id": row[0],
+                    "name": row[1],
+                    "rating": row[2],
+                    "review_msg": row[3],
+                    "created_at": row[4].strftime("%Y-%m-%d") if row[4] else None
                 }
                 for row in rows
             ]
