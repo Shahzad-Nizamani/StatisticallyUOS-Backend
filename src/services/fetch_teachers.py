@@ -41,7 +41,7 @@ def fetch_teachers_by_dept(dept_id: int, request: Request):
     teachers = db_session.execute(
         text("""
             SELECT t.tid, t.name, t.role, t.dept_id,
-                   COALESCE(ROUND(AVG(tr.rating), 2), 0) AS avg_rating,
+                   COALESCE(ROUND(AVG(tr.rating), 1), 0) AS avg_rating,
                    COUNT(tr.rating) as total_reviews
             FROM teacher t
             LEFT JOIN teacher_review tr ON t.tid = tr.tid

@@ -4,6 +4,7 @@ from src.pydantic_models.teacher_review_model import TeacherReview
 from src.services.insert_teacher_review import insert_teacher_review
 from src.services.fetch_teacher_reviews import fetch_teacher_reviews
 from fastapi.requests import Request
+from src.services.delete_and_update_teacher_reviews import update_review, delete_review
 
 router = APIRouter()
 
@@ -25,3 +26,11 @@ def teacher_review(review:TeacherReview, tid:int):
 @router.get("/get_teacher_reviews/{tid}")
 def get_teacher_reviews(tid:int):
     return fetch_teacher_reviews(tid)
+
+@router.put("/update_teacher_review/{review_id}")
+def update_teacher_review(review_id: int, rating: int, review_msg:str):
+    return update_review(review_id, rating, review_msg)
+
+@router.delete("/delete_teacher_review/{review_id}")
+def delete_teacher_review(review_id:int):
+    return delete_review(review_id)
