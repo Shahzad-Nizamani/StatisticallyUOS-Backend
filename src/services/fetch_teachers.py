@@ -19,7 +19,7 @@ def get_teacher_by_tid(tid, request: Request):
     dept_id = teacher_dict.get("dept_id")
     name = teacher_dict.get("name")
 
-    matched_files = list(BASE_DIR.glob(f"*_{dept_id}.jpg"))
+    matched_files = list(BASE_DIR.glob(f"*_{dept_id}.webp"))
     name_words = [w.lower() for w in name.split() if len(w) > 2]
     best_match, best_score = None, 0
 
