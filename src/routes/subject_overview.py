@@ -4,12 +4,13 @@ from src.services.fetch_subject_reviews import fetch_subject_reviews
 from src.pydantic_models.subject_review_model import SubjectReview
 from src.services.insert_subject_review import insert_subject_review
 from src.services.delete_and_update_subject_reviews import update_review, delete_review
+from typing import Optional
 
 router = APIRouter()
 
 @router.get("/get_subject_stats/{dept_id}/{course_name}")
-def get_subject_stats(dept_id: int, course_name: str):
-    return subject_stats(dept_id, course_name)
+def get_subject_stats(dept_id: int, course_name: str, year: Optional[int]=None):
+    return subject_stats(dept_id, course_name, year)
 
 @router.get("/get_subject_reviews/{dept_id}/{course_code}")
 def subject_reviews(dept_id:int, course_code:str):
