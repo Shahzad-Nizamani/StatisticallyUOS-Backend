@@ -47,7 +47,7 @@ A stats-based leaderboard and teacher review platform for **University of Sindh*
                        ▼
 ┌─────────────────────────────────────────────┐
 │              PostgreSQL Database             │
-│     Students · Results · Reviews · Stats     │
+│ Students · Departments · Courses · Results     │
 └──────────────────────┬──────────────────────┘
                        │ SQLAlchemy ORM
                        ▼
@@ -97,23 +97,6 @@ alembic upgrade head
 # Start the API server
 uvicorn main:app --reload
 ```
-
-### Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-### Running the Scraper
-
-```bash
-python scraper/main.py
-```
-
-> **Note:** The scraper is designed to run continuously on a VPS via a cron job or process manager like `supervisor` or `pm2`.
-
 ---
 
 ## API Overview
@@ -134,16 +117,16 @@ Full API documentation is available at `/docs` (Swagger UI) when the server is r
 
 PostgreSQL stores millions of scraped records including:
 
-- Student profiles and enrollment data
-- Result records per semester and subject
-- Computed CGPA and ranking data
-- Teacher review submissions
+- Student data
+- Result records per year and subject
+- Departments
+- Teacher profiles
 
 ---
 
 ## Deployment
 
-Both the FastAPI backend and the scraping script are hosted on a **DigitalOcean VPS**. The scraper runs on a schedule to keep data up to date. The frontend is deployed separately.
+Both the FastAPI backend and the scraping script are hosted on a **DigitalOcean VPS**. The scraper runs on a schedule to keep data up to date. The frontend is deployed separately on Vercel.
 
 ---
 
