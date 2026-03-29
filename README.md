@@ -1,5 +1,6 @@
-Tech:
-Backend: FastAPI
+Tech:FastAPI
+
+
 Database: PostgreSQL (via SQLAlchemy ORM)
 Scraper: Requests and BeautifulSoup4
 Environment: Python 3.10+
