@@ -2,6 +2,7 @@
 from fastapi import APIRouter
 from typing import Optional
 from src.services.students_and_results import fetch_students
+from src.services.students_and_results import fetch_results_by_roll_no
 
 app = APIRouter()
 
@@ -28,3 +29,8 @@ def get_students(
             for r in results
         ]
     }
+
+
+@app.get("/results")
+def get_results(roll_no: str):
+    return fetch_results_by_roll_no(roll_no)

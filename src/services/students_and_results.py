@@ -51,3 +51,47 @@ def fetch_students(name: str = None, surname: str = None, dept_id: int = None, b
         ]
     
     return results
+
+def fetch_results_by_roll_no(roll_no: str):
+    db_session = session()
+    
+    result_query = text("SELECT r.*, c.course_name FROM result r JOIN course c ON r.course_code = c.course_code WHERE r.roll_no = :roll_no")
+    results = db_session.execute(result_query, {"roll_no": roll_no}).fetchall()
+    
+    student_query = text("SELECT * FROM student WHERE roll_no = :roll_no")
+    student = db_session.execute(student_query, {"roll_no": roll_no}).fetchone()
+    
+    db_session.close()
+    
+    student = dict(db_session.execute(student_query, {"roll_no": roll_no}).fetchone()._mapping)
+
+    student_dict = {
+        "name": student["name"],
+        "fname": student["fname"],
+        "surname": student["surname"],
+        "cgpa": student["cgpa"],
+        "percentage": student["percentage"]
+    }
+    
+    serialized = [dict(row._mapping) for row in results]
+    
+    batch_year = 2000 + int(roll_no.split("/")[0][2:])  # "2K24" -> 2024
+    
+    parts = {}
+    for row in serialized:
+        part = row["year"] - batch_year + 1
+        key = f"part {part}"
+        if key not in parts:
+            parts[key] = []
+        parts[key].append({
+            "roll_no": row["roll_no"],
+            "course_code": row["course_code"],
+            "marks": row["marks"],
+            "grade": row["grade"],
+            "course_name": row["course_name"]
+        })
+    
+    return {
+        "student": student_dict,
+        "results": parts
+    }
