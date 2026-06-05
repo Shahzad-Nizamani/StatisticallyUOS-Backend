@@ -50,7 +50,7 @@ def scrape_all():
             print(f"PROCESSING DEPARTMENT WITH ID: {dept_id}")
             print(f"{'='*60}")
 
-            year = 4
+            year = 22
             seen_courses = set()
 
             while year <= 25:
@@ -62,111 +62,98 @@ def scrape_all():
                 n = 1
                 consecutive_not_found = 0
                 students_found_this_year = 0
-                
-                # Process students in this year
+
+                payload_year = 2025
+                part = payload_year - (year + 2000) + 1
+                exam_year = payload_year
+                print("PART---- ", part)
+
                 while consecutive_not_found < 10:
                     student_found = False
-                    
+                    student = None  # ← reset explicitly every iteration
+
                     try:
-                        part = 1
-                        results = True
-                        payload_year = year
-                        
-                        # Process all parts for this roll number
-                        while results:
-                            exam_year = f"20{payload_year:02d}"
-                            
-                            rollno = f"2K{year}/{depts[dept_id]}/{n}"
-                            payload = {
-                                "roll_no": rollno,
-                                "exam_year": exam_year,
-                                "part": part
-                            }
-                            
-                            print(f"Fetching: {rollno}, Part {part}...", end=" ")
-                            response = req_session.post(url, headers=headers, data=payload, timeout=30)
-                            print(f"Status: {response.status_code}")
-                            
-                            soup = BeautifulSoup(response.text, "html.parser")
-                            tables = soup.find_all("table")
-                            print(f"  Tables found: {len(tables)}")
-                            
-                            # Check if results for this part exist (3 tables = results available)
-                            if len(tables) != 3:
-                                print(f"  No more parts for this student")
-                                results = False
-                                continue
+                        rollno = f"2K{year}/{depts[dept_id]}/{n}"
+                        payload = {
+                            "roll_no": rollno,
+                            "exam_year": exam_year,
+                            "part": part
+                        }
 
-                            # Check if student exists (at least 2 tables expected)
-                            if len(tables) >= 2:
-                                html = response.text
-                                student_found = True
+                        print(f"Fetching: {rollno}, Part {part}...", end=" ")
+                        response = req_session.post(url, headers=headers, data=payload, timeout=30)
+                        print(f"Status: {response.status_code}")
 
-                                student = parsed_student(html)
-                                courses = parsed_course(html)
-                                student_results = parsed_result(html)
-                                                              
-                                # Only append if parsing returned valid data
-                                if student:
+                        soup = BeautifulSoup(response.text, "html.parser")
+                        tables = soup.find_all("table")
+                        print(f"  Tables found: {len(tables)}")
 
-                                    for course in courses:
-                                        key = (course["course_code"], course["course_name"])
-                                        if key not in seen_courses:
-                                            courses_list.append(course)
-                                            seen_courses.add(key)
-
-                                        print(course)
-                                    
-                                    for result in student_results:
-                                        result["roll_no"] = rollno
-                                        result["year"] = exam_year
-                                        results_list.append(result)
-                                        print(result)
-
-                                    print(f"  ✓ Student data saved")
-                                else:
-                                    print(f"  ⚠ Parsing failed")
-                            else:
-                                print(f"  ✗ Student not found")
-                            
-                            part += 1
-                            payload_year += 1
-                            time.sleep(2)  # Rate limiting
-                        
-                        # Update consecutive not found counter
-                        if student_found:
-                            consecutive_not_found = 0
-                        else:
+                        if len(tables) != 3:
+                            print(f"  ✗ Student not found")
                             consecutive_not_found += 1
                             print(f"  Consecutive not found: {consecutive_not_found}/10")
-                        
+                            n += 1
+                            continue
+
+                        html = response.text
+                        student_found = True
+
+                        student = parsed_student(html)
+                        courses = parsed_course(html)
+                        student_results = parsed_result(html)
+
+                        if student:
+                            for course in courses:
+                                key = (course["course_code"], course["course_name"])
+                                if key not in seen_courses:
+                                    courses_list.append(course)
+                                    seen_courses.add(key)
+                                print(course)
+
+                            for result in student_results:
+                                result["roll_no"] = rollno
+                                result["year"] = exam_year
+                                results_list.append(result)
+                                print(result)
+
+                            print(f"  ✓ Student data parsed")
+                        else:
+                            print(f"  ⚠ Parsing failed")
+                            student_found = False  # parsing failed, treat as not found
+
                     except requests.exceptions.RequestException as e:
                         print(f"  ✗ Request failed: {e}")
-                        
+
                     except Exception as e:
-                        print(f"  ✗ Error processing: {e}")  
-                    
+                        print(f"  ✗ Error processing: {e}")
+
+                    # Update consecutive not found counter
+                    if student_found:
+                        consecutive_not_found = 0
+                    else:
+                        consecutive_not_found += 1
+                        print(f"  Consecutive not found: {consecutive_not_found}/10")
+
                     if student_found and student:
                         student["dept_id"] = dept_id
                         print(f"Final student: {student}")
                         students_list.append(student)
-                        students_found_this_year += 1 
+                        students_found_this_year += 1
 
-                    n += 1
-                
+                    time.sleep(3)
+                    n += 1  # ← always increments, never skipped
+
                 if students_list:
-                   insert_all_to_db(students_list, courses_list, results_list)
-                   print(f"\nYear 2K{year:02d} complete: Found {students_found_this_year} students")
+                    insert_all_to_db(students_list, courses_list, results_list)
+                    print(f"\nYear 2K{year:02d} complete: Found {students_found_this_year} students")
                 else:
                     print(f"\nNo students found in year 2K{year:02d}")
-                
-                # Move to next year
+
                 year += 1
-            
+
             print(f"\n{'='*60}")
             print(f"Finished Department id {dept_id}!")
 
-        
         print(f"\n{'='*60}")
         print(f"SCRAPING COMPLETE")
         print(f"{'='*60}")

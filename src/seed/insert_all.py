@@ -3,12 +3,28 @@ from sqlalchemy.dialects.postgresql import insert
 from src.db_models.course import Course
 from src.db_models.student import Student
 from src.db_models.result import Result
+from sqlalchemy import case
 
 def insert_all_to_db(students, courses, results):
     db_session = session()
 
     try:
-        bulk_insert_students = insert(Student).values(students).on_conflict_do_nothing(index_elements=["roll_no"])
+        
+        bulk_insert_students = insert(Student).values(students)
+        excluded = bulk_insert_students.excluded
+        bulk_insert_students = bulk_insert_students.on_conflict_do_update(
+            index_elements=["roll_no"],
+            set_={
+                "cgpa": case(
+                    (excluded.cgpa != None, excluded.cgpa),
+                    else_=Student.cgpa
+                ),
+                "percentage": case(
+                    (excluded.percentage != None, excluded.percentage),
+                    else_=Student.percentage
+                )
+            }
+        )
         db_session.execute(bulk_insert_students)
 
         if courses and any(c.get('course_code') for c in courses):

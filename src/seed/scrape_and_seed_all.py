@@ -8,8 +8,7 @@ from create_tables import create_tables
 from seed_dept import seed_dept
 
 def seed_all():
-    create_tables()
-    seed_dept()
+
 
     try:
         scrape_all()
