@@ -5,8 +5,7 @@ from bs4 import BeautifulSoup
 import time
 import sys
 from pathlib import Path
-project_root = Path(__file__).parent.parent
-sys.path.insert(0, str(project_root))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 import json
 from src.seed.insert_all import insert_all_to_db
