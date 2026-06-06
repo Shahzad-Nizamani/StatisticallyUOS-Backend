@@ -9,10 +9,10 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 import json
-from scraper.parse_student import parsed_student
-from scraper.parse_course import parsed_course
-from scraper.parse_result import parsed_result
-from seed.insert_all import insert_all_to_db
+from src.seed.insert_all import insert_all_to_db
+from src.scraper.parse_student import parsed_student
+from src.scraper.parse_course import parsed_course
+from src.scraper.parse_result import parsed_result
 
 def scrape_all():
     req_session = requests.Session()
