@@ -35,26 +35,29 @@ def cgpa_leaderboard(dept_id, surname, limit, order):
     db_session.close()
     return [dict(row._mapping) for row in leaderboard]
 
-
 def subject_wise_leaderboard(course, dept_id, surname, limit, order):
     db_session = session()
-    course_codes = get_course_code(db_session,course)
-      
-    sort = "ASC" if order == "asc" else "DESC"
+    course_codes = get_course_code(db_session, course)
+    print(f"Course codes for '{course}': {course_codes}")
 
-    base = "SELECT s.roll_no, s.name, s.fname, s.surname, r.marks, r.grade FROM STUDENT s JOIN RESULT r ON s.roll_no = r.roll_no WHERE s.dept_id = :dept_id AND r.course_code in :course_codes"
+    if not course_codes:
+        db_session.close()
+        return []
+
+    sort = "ASC" if order == "asc" else "DESC"
+    placeholders = ", ".join(f"'{code}'" for code in course_codes)
+    base = f"SELECT s.roll_no, s.name, s.fname, s.surname, r.marks, r.grade FROM STUDENT s JOIN RESULT r ON s.roll_no = r.roll_no WHERE s.dept_id = :dept_id AND r.course_code IN ({placeholders})"
 
     if surname:
         surname = surname.upper()
-
         leaderboard = db_session.execute(
             text(f"{base} AND s.SURNAME = :surname ORDER BY r.MARKS {sort} NULLS LAST LIMIT :limit"),
-            {"dept_id": dept_id, "course_codes": course_codes, "surname":surname, "limit": limit}
+            {"dept_id": dept_id, "surname": surname, "limit": limit}
         ).fetchall()
     else:
         leaderboard = db_session.execute(
             text(f"{base} ORDER BY r.MARKS {sort} NULLS LAST LIMIT :limit"),
-            {"dept_id":dept_id, "course_codes": course_codes, "limit": limit}
+            {"dept_id": dept_id, "limit": limit}
         ).fetchall()
 
     db_session.close()

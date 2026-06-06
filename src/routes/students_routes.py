@@ -4,9 +4,9 @@ from typing import Optional
 from src.services.students_and_results import fetch_students
 from src.services.students_and_results import fetch_results_by_roll_no
 
-app = APIRouter()
+router = APIRouter()
 
-@app.get("/students")
+@router.get("/students")
 def get_students(
     name: Optional[str] = None,
     surname: Optional[str] = None,
@@ -31,6 +31,6 @@ def get_students(
     }
 
 
-@app.get("/results")
+@router.get("/results")
 def get_results(roll_no: str):
     return fetch_results_by_roll_no(roll_no)
