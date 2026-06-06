@@ -1,4 +1,4 @@
-from config.db_config import session
+from src.config.db_config import session
 from sqlalchemy.dialects.postgresql import insert
 from src.db_models.course import Course
 from src.db_models.student import Student
