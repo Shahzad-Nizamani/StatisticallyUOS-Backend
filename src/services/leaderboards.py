@@ -2,35 +2,32 @@ from sqlalchemy import text
 from src.config.db_config import session
 from src.helpers.course_codes_fetcher import get_course_code
 
-def cgpa_leaderboard(dept_id, surname, limit, order):
+def cgpa_leaderboard(dept_id, batch, surname, limit, order):
     db_session = session()
-    
     
     sort = "ASC" if order == "asc" else "DESC"
 
-    if surname and dept_id:
-        surname = surname.upper()
+    conditions = []
+    params = {"limit": limit}
 
-        leaderboard = db_session.execute(
-            text(f"SELECT * FROM STUDENT WHERE DEPT_ID = :dept_id AND SURNAME = :surname ORDER BY CGPA {sort} NULLS LAST LIMIT :limit"),
-            {"dept_id": dept_id, "surname": surname, "limit": limit}
-        ).fetchall()
-    elif dept_id:
-        leaderboard = db_session.execute(
-            text(f"SELECT * FROM STUDENT WHERE DEPT_ID = :dept_id ORDER BY CGPA {sort} NULLS LAST LIMIT :limit"),
-            {"dept_id": dept_id, "limit": limit}
-        ).fetchall()
-    elif surname:
-        surname = surname.upper()
-        leaderboard = db_session.execute(
-            text(f"SELECT * FROM STUDENT WHERE SURNAME = :surname ORDER BY CGPA {sort} NULLS LAST LIMIT :limit"),
-            {"surname": surname, "limit": limit}
-        ).fetchall()
-    else:
-        leaderboard = db_session.execute(
-            text(f"SELECT * FROM STUDENT ORDER BY CGPA {sort} NULLS LAST LIMIT :limit"),
-            {"limit": limit}
-        ).fetchall()
+    if dept_id:
+        conditions.append("DEPT_ID = :dept_id")
+        params["dept_id"] = dept_id
+
+    if batch:
+        conditions.append("roll_no LIKE :batch")
+        params["batch"] = f"{batch}%"
+
+    if surname:
+        conditions.append("SURNAME = :surname")
+        params["surname"] = surname.upper()
+
+    where_clause = f"WHERE {' AND '.join(conditions)}" if conditions else ""
+
+    leaderboard = db_session.execute(
+        text(f"SELECT * FROM STUDENT {where_clause} ORDER BY CGPA {sort} NULLS LAST LIMIT :limit"),
+        params
+    ).fetchall()
 
     db_session.close()
     return [dict(row._mapping) for row in leaderboard]
