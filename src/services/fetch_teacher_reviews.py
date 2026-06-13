@@ -6,18 +6,18 @@ def fetch_teacher_reviews(tid):
     
     try:        
         query = text('''
-            SELECT
-                id,
-                name, 
-                rating, 
-                review_msg, 
-                created_at,
-                AVG(rating) OVER () as avg_rating,
-                COUNT(*) FILTER (WHERE rating = 1) OVER () as one_rating_count,
-                COUNT(*) FILTER (WHERE rating = 5) OVER () as five_rating_count
-            FROM teacher_review 
-            WHERE tid = :tid
-        ''')
+    SELECT
+        id,
+        name, 
+        rating, 
+        review_msg, 
+        created_at,
+        AVG(rating) OVER () as avg_rating,
+        COUNT(*) FILTER (WHERE rating = 1) OVER () as one_rating_count,
+        COUNT(*) FILTER (WHERE rating = 5) OVER () as five_rating_count
+    FROM teacher_review 
+    WHERE tid = :tid AND is_deleted = FALSE
+''')
         reviews = db_session.execute(query, {"tid": tid})
         rows = reviews.fetchall()
 

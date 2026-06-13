@@ -25,7 +25,7 @@ def delete_review(review_id):
     review = db_session.execute(text("select * from teacher_review where id = :review_id"), {"review_id" :review_id}).fetchone()
 
     if review:
-        delete_query = "DELETE FROM teacher_review WHERE id =:review_id"
+        delete_query = "UPDATE teacher_review SET is_deleted = TRUE WHERE id =:review_id"
         db_session.execute(text(delete_query), {"review_id":review_id})
 
         db_session.commit()

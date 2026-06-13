@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, ForeignKey, CheckConstraint, Index, DateTime
+from sqlalchemy import Boolean, Column, String, Integer, ForeignKey, CheckConstraint, Index, DateTime
 from sqlalchemy.orm import relationship
 from src.config.db_config import Base
 
@@ -15,5 +15,6 @@ class TeacherReview(Base):
     review_msg = Column(String(500))
     tid = Column(Integer, ForeignKey("teacher.tid", ondelete="CASCADE"))
     created_at = Column(DateTime, nullable=True)
+    is_deleted = Column(Boolean, nullable=False, default=False)
 
     teacher = relationship("Teacher", back_populates="reviews")
