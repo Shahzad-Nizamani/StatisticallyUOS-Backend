@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from sqlalchemy import text
 from src.config.db_config import session
 from src.helpers.course_codes_fetcher import get_course_code
@@ -39,7 +40,7 @@ def subject_wise_leaderboard(course, dept_id, surname, limit, order):
 
     if not course_codes:
         db_session.close()
-        return []
+        raise HTTPException(404, detail="Course not found")
 
     sort = "ASC" if order == "asc" else "DESC"
     placeholders = ", ".join(f"'{code}'" for code in course_codes)
@@ -64,6 +65,14 @@ def batch_wise_subject_leaderboard(dept_id, batch, course, order, limit):
     db_session = session()
     sort = "ASC" if order == "asc" else "DESC"
 
+    course_exists = db_session.execute(
+        text("SELECT 1 FROM COURSE WHERE course_code = :course_code"), {"course_code": course}
+    ).fetchone()    
+
+    if not course_exists:
+        db_session.close()
+        raise HTTPException(404, detail="Course not found")
+    
     query = text(f"""
         SELECT s.roll_no, s.name, s.fname, s.surname, r.marks, r.grade 
         FROM student s 

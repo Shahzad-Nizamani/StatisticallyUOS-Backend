@@ -2,6 +2,7 @@ from fastapi.requests import Request
 from sqlalchemy import text
 from src.config.db_config import session
 from pathlib import Path
+from fastapi import HTTPException
 
 BASE_DIR = Path(__file__).resolve().parent.parent / "static" / "images" / "teachers"
 
@@ -12,8 +13,8 @@ def get_teacher_by_tid(tid, request: Request):
     ).fetchone()
     db_session.close()
 
-    if teacher is None:
-        return None
+    if not teacher:
+        raise HTTPException(404, detail="Teacher not found")
 
     teacher_dict = dict(teacher._mapping)
     dept_id = teacher_dict.get("dept_id")

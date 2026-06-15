@@ -1,13 +1,14 @@
 from src.config.db_config import session
 from sqlalchemy import text
 from src.services.leaderboards import get_course_code
+from fastapi import HTTPException
 
 def subject_stats(dept_id, course, year=None):
     db_session = session()
     
     course_codes = get_course_code(db_session, course)
     if not course_codes:
-        return {"course": course, "department": dept_id, "result": "NO COURSE FOUND"}
+        raise HTTPException(404, detail="Course not found")
 
     year_filter = "AND r.year = :year" if year else ""
     params_base = {"course_codes": course_codes, "dept_id": dept_id}

@@ -6,7 +6,7 @@ router = APIRouter()
 
 @router.get("/cgpa_leaderboard")
 def cgpa_leaderboard(
-    dept_id: int = Query(ge=1, le=501, description="Departments only exist between 1 and 500. Please provide a valid department ID."),
+    dept_id: int = Query(default=None, ge=1, le=501, description="Departments only exist between 1 and 501. Please provide a valid department ID."),
     batch: Optional[str] = None,
     surname: Optional[str] = None,
     limit: int = Query(default=10, ge=1, le=100),

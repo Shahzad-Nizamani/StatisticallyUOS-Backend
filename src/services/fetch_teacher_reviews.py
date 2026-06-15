@@ -1,9 +1,18 @@
+from fastapi import HTTPException
+
 from src.config.db_config import session
 from sqlalchemy import text
 
 def fetch_teacher_reviews(tid):
     db_session = session()
-    
+
+    teacher_exists = db_session.execute(
+        text("SELECT 1 FROM teacher WHERE tid = :tid"), {"tid": tid}
+    ).fetchone()
+
+    if not teacher_exists:
+        raise HTTPException(404, detail="Teacher not found")
+
     try:        
         query = text('''
     SELECT
